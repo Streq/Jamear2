@@ -33,5 +33,5 @@ git stash pop || exit "$?"
 
 print_message "committing changes"
 git commit -m"release"
-git push
+git push || git push --set-upstream origin gh-pages || exit "$?"
 git checkout main
