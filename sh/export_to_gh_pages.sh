@@ -5,9 +5,6 @@ print_message(){
 	echo "${green}$1${reset}"
 }
 
-print_message "exporting HTML5"
-godot --export "HTML5" --quiet || exit "$?"
-
 print_message "stashing changes"
 git add .
 git stash || exit "$?"
