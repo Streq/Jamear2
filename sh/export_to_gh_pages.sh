@@ -16,6 +16,7 @@ else
 fi
 
 CURRENT_VERSION=$(git describe --abbrev=0 --tags 2>/dev/null)
+print_message "version $CURRENT_VERSION"
 
 git checkout gh-pages || git checkout -b gh-pages || exit "$?"
 
@@ -37,7 +38,7 @@ RELEASE_DIR=releases
 DEST_DIR = $RELEASE_DIR/$CURRENT_VERSION
 [ ! -d $DEST_DIR ] mkdir $DEST_DIR
 
-print_message "copying latest export to corresponding release directory"
+print_message "copying latest export to corresponding release directory $DEST_DIR"
 rsync -av --progress index* $DEST_DIR --exclude $RELEASE_DIR
 
 print_message "committing changes"
