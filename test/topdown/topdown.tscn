@@ -86,6 +86,7 @@ texture = ExtResource( 1 )
 shape = SubResource( 5 )
 
 [node name="vision" type="Node2D" parent="human"]
+modulate = Color( 1, 0, 0, 0.521569 )
 light_mask = 2
 z_index = -1
 script = ExtResource( 3 )
@@ -107,13 +108,17 @@ shadow_item_cull_mask = 2
 layer = -1
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.501961, 0.137255, 0.137255, 1 )
 
 [node name="controls" type="Label" parent="."]
+modulate = Color( 0, 1, 0.717647, 1 )
 light_mask = 0
 margin_right = 40.0
 margin_bottom = 14.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_as_outline = 1
 text = "wasd o flechitas para moverse
 barra espaciadora para alternar entre vision alien y vision humana"
