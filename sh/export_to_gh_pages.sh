@@ -27,12 +27,15 @@ if $GITIGNORE; then
 	print_message "recovering .gitignore"
 	git checkout main -- .gitignore || exit "$?"
 fi
+RELEASE_DIR=releases
+
+print_message "recovering releases"
+git checkout main -- $RELEASE_DIR || exit "$?"
 
 print_message "applying stash"
 git stash pop || exit "$?"
 
 print_message "creating release directory"
-RELEASE_DIR=releases
 [ ! -d $RELEASE_DIR ] && mkdir $RELEASE_DIR
 
 DEST_DIR=$RELEASE_DIR/$CURRENT_VERSION
