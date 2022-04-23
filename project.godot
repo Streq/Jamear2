@@ -51,10 +51,12 @@ Global="*res://global/global.gd"
 window/size/width=640
 window/size/height=640
 window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [global]
 
 clear=false
+displa=false
 
 [input]
 
