@@ -39,7 +39,7 @@ print_message "creating release directory"
 [ ! -d $RELEASE_DIR ] && mkdir $RELEASE_DIR
 
 DEST_DIR=$RELEASE_DIR/$CURRENT_VERSION
-[ ! -d $DEST_DIR ] mkdir $DEST_DIR
+[ ! -d $DEST_DIR ] && mkdir $DEST_DIR
 
 print_message "copying latest export to corresponding release directory $DEST_DIR"
 rsync -av --progress index* $DEST_DIR --exclude $RELEASE_DIR
