@@ -30,7 +30,7 @@ fi
 RELEASE_DIR=releases
 
 print_message "recovering releases"
-git checkout main -- $RELEASE_DIR || exit "$?"
+git checkout HEAD -- $RELEASE_DIR || exit "$?"
 
 print_message "applying stash"
 git stash pop || exit "$?"
