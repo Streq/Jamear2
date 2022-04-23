@@ -18,8 +18,6 @@ fi
 CURRENT_VERSION=$(git describe --abbrev=0 --tags 2>/dev/null)
 print_message "version $CURRENT_VERSION"
 
-. generate_release_index.sh
-
 git checkout gh-pages || git checkout -b gh-pages || exit "$?"
 
 print_message "running git rm -rf on directory (to avoid merge conflicts)"

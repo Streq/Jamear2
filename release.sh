@@ -1,4 +1,5 @@
 #!/bin/bash
+. sh/generate_release_index.sh
 ./sh/require_clean_work_tree.sh || exit "$?"
 ./sh/export.sh || exit "$?"
 ./sh/increment_version.sh "$@"
