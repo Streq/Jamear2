@@ -35,7 +35,7 @@ print_message "creating release directory"
 RELEASE_DIR=releases
 [ ! -d $RELEASE_DIR ] && mkdir $RELEASE_DIR
 
-DEST_DIR = $RELEASE_DIR/$CURRENT_VERSION
+DEST_DIR=$RELEASE_DIR/$CURRENT_VERSION
 [ ! -d $DEST_DIR ] mkdir $DEST_DIR
 
 print_message "copying latest export to corresponding release directory $DEST_DIR"
