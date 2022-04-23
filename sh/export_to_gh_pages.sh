@@ -15,6 +15,8 @@ else
 	GITIGNORE=false
 fi
 
+CURRENT_VERSION=$(git describe --abbrev=0 --tags 2>/dev/null)
+
 git checkout gh-pages || git checkout -b gh-pages || exit "$?"
 
 print_message "running git rm -rf on directory (to avoid merge conflicts)"
@@ -30,15 +32,16 @@ git stash pop || exit "$?"
 
 print_message "creating release directory"
 RELEASE_DIR=releases
-CURRENT_VERSION=`git describe --abbrev=0 --tags 2>/dev/null`
 [ ! -d $RELEASE_DIR ] && mkdir $RELEASE_DIR
 
-mkdir $RELEASE_DIR/$CURRENT_VERSION
+DEST_DIR = $RELEASE_DIR/$CURRENT_VERSION
+[ ! -d $DEST_DIR ] mkdir $DEST_DIR
 
 print_message "copying latest export to corresponding release directory"
-rsync -av --progress . $RELEASE_DIR/$CURRENT_VERSION --exclude $RELEASE_DIR
+rsync -av --progress index* $DEST_DIR --exclude $RELEASE_DIR
 
 print_message "committing changes"
+git add .
 git commit -m"release"
 git push || git push --set-upstream origin gh-pages || exit "$?"
 git checkout main
