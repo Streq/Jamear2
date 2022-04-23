@@ -18,6 +18,8 @@ fi
 CURRENT_VERSION=$(git describe --abbrev=0 --tags 2>/dev/null)
 print_message "version $CURRENT_VERSION"
 
+. generate_release_index.sh
+
 git checkout gh-pages || git checkout -b gh-pages || exit "$?"
 
 print_message "running git rm -rf on directory (to avoid merge conflicts)"
@@ -40,6 +42,9 @@ DEST_DIR=$RELEASE_DIR/$CURRENT_VERSION
 
 print_message "copying latest export to corresponding release directory $DEST_DIR"
 rsync -av --progress index* $DEST_DIR --exclude $RELEASE_DIR
+
+print_message "generating release index"
+generate_release_index
 
 print_message "committing changes"
 git add .
