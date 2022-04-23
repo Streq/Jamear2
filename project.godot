@@ -8,10 +8,32 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Reference",
+"class": "Bool",
+"language": "GDScript",
+"path": "res://global/bool.gd"
+}, {
+"base": "Reference",
+"class": "Math",
+"language": "GDScript",
+"path": "res://global/math.gd"
+}, {
+"base": "Node",
+"class": "PoolArray",
+"language": "GDScript",
+"path": "res://global/pool_array.gd"
+} ]
+_global_script_class_icons={
+"Bool": "",
+"Math": "",
+"PoolArray": ""
+}
+
 [application]
 
 config/name="Jamear2"
-run/main_scene="res://main.tscn"
+run/main_scene="res://test/topdown/topdown.tscn"
 config/icon="res://icon.png"
 
 [physics]

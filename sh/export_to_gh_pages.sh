@@ -22,11 +22,21 @@ git rm -rf . || exit "$?"
 
 if $GITIGNORE; then
 	print_message "recovering .gitignore"
-	git checkout HEAD -- .gitignore || exit "$?"
+	git checkout main -- .gitignore || exit "$?"
 fi
 
 print_message "applying stash"
 git stash pop || exit "$?"
+
+print_message "creating release directory"
+RELEASE_DIR=releases
+CURRENT_VERSION=`git describe --abbrev=0 --tags 2>/dev/null`
+[ ! -d $RELEASE_DIR ] && mkdir $RELEASE_DIR
+
+mkdir $RELEASE_DIR/$CURRENT_VERSION
+
+print_message "copying latest export to corresponding release directory"
+rsync -av --progress . $RELEASE_DIR/$CURRENT_VERSION --exclude $RELEASE_DIR
 
 print_message "committing changes"
 git commit -m"release"
