@@ -15,6 +15,11 @@ _global_script_classes=[ {
 "path": "res://global/bool.gd"
 }, {
 "base": "Reference",
+"class": "InputUtils",
+"language": "GDScript",
+"path": "res://global/input_utils.gd"
+}, {
+"base": "Reference",
 "class": "Math",
 "language": "GDScript",
 "path": "res://global/math.gd"
@@ -31,6 +36,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Bool": "",
+"InputUtils": "",
 "Math": "",
 "PoolArray": "",
 "RenderUtils": ""
