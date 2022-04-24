@@ -45,7 +45,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Jamear2"
-run/main_scene="res://test/topdown/topdown.tscn"
+run/main_scene="res://test/topdown/topdown_different_vision.tscn"
 config/icon="res://icon.png"
 
 [autoload]

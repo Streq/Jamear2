@@ -41,7 +41,7 @@ radius = 8.0
 [sub_resource type="CircleShape2D" id=5]
 radius = 8.0
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 
 [node name="map" type="TileMap" parent="."]
 tile_set = SubResource( 3 )
