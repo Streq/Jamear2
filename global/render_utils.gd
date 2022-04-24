@@ -1,7 +1,7 @@
 class_name RenderUtils
 
 static func draw_circle_slice(canvas_item:CanvasItem, center:Vector2, radius:float, angle_from:float, angle_to:float, color:Color):
-	var nb_points = 32
+	var nb_points = int(radius*2)
 	var points_arc = PoolVector2Array()
 	points_arc.push_back(Vector2.ZERO)
 	for i in range(nb_points + 1):

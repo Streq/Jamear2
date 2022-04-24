@@ -66,6 +66,8 @@ color = Color( 0.431373, 0.211765, 0.211765, 1 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = -159.0
+margin_top = -155.0
+margin_right = 801.0
+margin_bottom = 805.0
 texture = SubResource( 3 )

@@ -1,5 +1,6 @@
 extends Node2D
 
+onready var light = $Light2D
 
 func _process(delta):
-	visible = Global.draw_vision
+	light.visible = Global.draw_vision
