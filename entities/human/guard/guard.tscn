@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://entities/human/guard/guard_body.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/transformable.gd" type="Script" id=2]
 [ext_resource path="res://entities/human/human.gd" type="Script" id=3]
 [ext_resource path="res://entities/human/guard/shoot_on_sight.gd" type="Script" id=4]
+[ext_resource path="res://entities/human/guard/idle.gd" type="Script" id=5]
+[ext_resource path="res://state_machine/state_machine.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -20,13 +22,29 @@ script = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="addons/transformable"]
 shape = SubResource( 1 )
 
-[node name="shoot_on_sight" type="Node" parent="addons"]
+[node name="guard_behavior" parent="addons" instance=ExtResource( 6 )]
+start_state = "idle"
+
+[node name="shoot_on_sight" type="Node" parent="addons/guard_behavior"]
 script = ExtResource( 4 )
 
-[node name="cooldown" type="Timer" parent="addons/shoot_on_sight"]
+[node name="cooldown" type="Timer" parent="addons/guard_behavior/shoot_on_sight"]
 process_mode = 0
 wait_time = 0.5
 one_shot = true
+
+[node name="idle" type="Node" parent="addons/guard_behavior"]
+script = ExtResource( 5 )
+
+[node name="reaction_time" type="Timer" parent="addons/guard_behavior/idle"]
+wait_time = 0.5
+one_shot = true
+
+[node name="dead" type="Node" parent="addons/guard_behavior"]
+
+[node name="alert" type="Node" parent="addons/guard_behavior"]
+
+[node name="patrol" type="Node" parent="addons/guard_behavior"]
 
 [node name="body" parent="." instance=ExtResource( 1 )]
 
