@@ -17,4 +17,7 @@ func _physics_process(delta):
 	var dir = Vector2()
 	body.dir = dir.normalized()
 	
-	
+
+
+func _on_dead():
+	queue_free()

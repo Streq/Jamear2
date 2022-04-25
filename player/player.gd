@@ -35,9 +35,12 @@ func transform_into(new_body: KinematicBody2D):
 		new_body.transform = Transform2D.IDENTITY
 		
 	body = new_body
-
+	body.connect("dead", self, "_on_dead")
 	var vision = body.get_node("vista")
 	vision.is_jugador = true
+
+func _on_dead():
+	get_tree().reload_current_scene()
 
 func transform_into_deferred(new_body: KinematicBody2D):
 	call_deferred("transform_into", new_body)
@@ -81,6 +84,8 @@ func set_max_transformation_time(val):
 func _input(event):
 	if event.is_action_pressed("detransform") and transformed:
 		detransform()
+	if event.is_action_pressed("skill"):
+		body.skill.trigger()
 
 func _on_consumable_entered(area):
 	target_bod = load(area.get_parent().filename)	
