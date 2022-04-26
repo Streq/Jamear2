@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://asset/texture/wall.png" type="Texture" id=2]
+[ext_resource path="res://levels/guards/patrol_path.gd" type="Script" id=3]
 [ext_resource path="res://entities/goal_zone/goal_zone.tscn" type="PackedScene" id=4]
 [ext_resource path="res://HUD/time_bar.gd" type="Script" id=5]
 [ext_resource path="res://entities/human/guard/guard.tscn" type="PackedScene" id=6]
@@ -88,21 +89,40 @@ position = Vector2( 296, 296 )
 collision_layer = 0
 collision_mask = 2
 
-[node name="guard" parent="." instance=ExtResource( 6 )]
-position = Vector2( 161, -115 )
-rotation = -0.785397
-
 [node name="guard2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 141, 161 )
 rotation = 0.523598
 
 [node name="guard3" parent="." instance=ExtResource( 6 )]
-position = Vector2( -49, 50 )
+position = Vector2( 258, 45 )
 rotation = -3.14159
+
+[node name="guard_behavior" parent="guard3/addons" index="1"]
+start_state = "patrol"
+
+[node name="patrol" parent="guard3/addons/guard_behavior" index="4"]
+patrol_path = NodePath("../../../../patrol_path")
 
 [node name="guard4" parent="." instance=ExtResource( 6 )]
 position = Vector2( -167, -122 )
 rotation = -0.523598
 
+[node name="patrol_path" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="0" type="Position2D" parent="patrol_path"]
+position = Vector2( 259, 45 )
+
+[node name="1" type="Position2D" parent="patrol_path"]
+position = Vector2( -149, 45 )
+
+[node name="2" type="Position2D" parent="patrol_path"]
+position = Vector2( -153, 233 )
+
+[node name="3" type="Position2D" parent="patrol_path"]
+position = Vector2( -149, 45 )
+
 [connection signal="max_transformation_time_changed" from="player" to="HUD/ProgressBar" method="set_max"]
 [connection signal="transformation_time_changed" from="player" to="HUD/ProgressBar" method="set_value"]
+
+[editable path="guard3"]

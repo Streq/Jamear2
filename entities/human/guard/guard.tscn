@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://entities/human/guard/guard_body.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/transformable.gd" type="Script" id=2]
@@ -6,6 +6,10 @@
 [ext_resource path="res://entities/human/guard/shoot_on_sight.gd" type="Script" id=4]
 [ext_resource path="res://entities/human/guard/idle.gd" type="Script" id=5]
 [ext_resource path="res://state_machine/state_machine.tscn" type="PackedScene" id=6]
+[ext_resource path="res://entities/human/guard/chase.gd" type="Script" id=7]
+[ext_resource path="res://entities/human/guard/patrol.gd" type="Script" id=8]
+[ext_resource path="res://entities/human/guard/alert.gd" type="Script" id=9]
+[ext_resource path="res://entities/human/guard/memory.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -36,17 +40,26 @@ one_shot = true
 [node name="idle" type="Node" parent="addons/guard_behavior"]
 script = ExtResource( 5 )
 
-[node name="reaction_time" type="Timer" parent="addons/guard_behavior/idle"]
+[node name="dead" type="Node" parent="addons/guard_behavior"]
+
+[node name="chase" type="Node" parent="addons/guard_behavior"]
+script = ExtResource( 7 )
+
+[node name="patrol" type="Node" parent="addons/guard_behavior"]
+script = ExtResource( 8 )
+
+[node name="alert" type="Node" parent="addons/guard_behavior"]
+script = ExtResource( 9 )
+
+[node name="reaction_time" type="Timer" parent="addons/guard_behavior/alert"]
 wait_time = 0.5
 one_shot = true
 
-[node name="dead" type="Node" parent="addons/guard_behavior"]
-
-[node name="alert" type="Node" parent="addons/guard_behavior"]
-
-[node name="patrol" type="Node" parent="addons/guard_behavior"]
+[node name="memory" type="Node" parent="addons"]
+script = ExtResource( 10 )
 
 [node name="body" parent="." instance=ExtResource( 1 )]
 
 [connection signal="area_entered" from="addons/transformable" to="addons/transformable" method="_on_area_entered"]
+[connection signal="timeout" from="addons/guard_behavior/alert/reaction_time" to="addons/guard_behavior/alert" method="_on_reaction_time_timeout"]
 [connection signal="dead" from="body" to="." method="_on_dead"]

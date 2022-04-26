@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://global/node_utils.gd"
 }, {
+"base": "Node2D",
+"class": "PatrolPath",
+"language": "GDScript",
+"path": "res://levels/guards/patrol_path.gd"
+}, {
 "base": "Node",
 "class": "PoolArray",
 "language": "GDScript",
@@ -59,6 +64,7 @@ _global_script_class_icons={
 "InputUtils": "",
 "Math": "",
 "NodeUtils": "",
+"PatrolPath": "",
 "PoolArray": "",
 "RenderUtils": "",
 "Skill": "",

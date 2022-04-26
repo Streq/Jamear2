@@ -13,10 +13,6 @@ func reparent_addons(to):
 	for a in addons:
 		NodeUtils.reparent(a,to)
 
-func _physics_process(delta):
-	var dir = Vector2()
-	body.dir = dir.normalized()
-	
 
 
 func _on_dead():

@@ -9,7 +9,8 @@ func physics_update(delta):
 		var current_dist_vec : Vector2 = target_body.global_position - body.global_position
 			
 		body.global_rotation = (current_dist_vec).angle()
-			
+		body.dir = Vector2()
+		body.get_node("memory").target_position = target_body.global_position
 		if cooldown.is_stopped():
 			var gun = body.get_node("skill")
 	#		gun.global_rotation = (target_body.global_position - body.global_position).angle()
@@ -22,4 +23,6 @@ func physics_update(delta):
 			gun.global_rotation = (current_dist_vec+target_body.velocity*d).angle()
 			gun.shoot()
 			cooldown.start()
-		
+#	can't see player, look for him
+	else:
+		body.dir = (body.get_node("memory").target_position - body.global_position).normalized()

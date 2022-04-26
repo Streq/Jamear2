@@ -9,9 +9,6 @@ func physics_update(delta):
 		var current_dist_vec : Vector2 = target_body.global_position - body.global_position
 			
 		body.global_rotation = (current_dist_vec).angle()
-			
-		if reaction_time.is_stopped():
-			reaction_time.start()
-			yield(reaction_time, "timeout")
-			emit_signal("finish", "shoot_on_sight", null)
+		body.get_node("memory").target_position
+		emit_signal("finish", "alert", null)
 		
