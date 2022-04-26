@@ -25,4 +25,4 @@ func physics_update(delta):
 			cooldown.start()
 #	can't see player, look for him
 	else:
-		body.dir = (body.get_node("memory").target_position - body.global_position).normalized()
+		emit_signal("finish", "chase", null)

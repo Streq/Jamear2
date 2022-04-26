@@ -100,7 +100,7 @@ rotation = -3.14159
 [node name="guard_behavior" parent="guard3/addons" index="1"]
 start_state = "patrol"
 
-[node name="patrol" parent="guard3/addons/guard_behavior" index="4"]
+[node name="patrol" parent="guard3/addons/guard_behavior" index="5"]
 patrol_path = NodePath("../../../../patrol_path")
 
 [node name="guard4" parent="." instance=ExtResource( 6 )]

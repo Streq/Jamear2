@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://entities/human/guard/guard_body.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/transformable.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://entities/human/guard/patrol.gd" type="Script" id=8]
 [ext_resource path="res://entities/human/guard/alert.gd" type="Script" id=9]
 [ext_resource path="res://entities/human/guard/memory.gd" type="Script" id=10]
+[ext_resource path="res://entities/human/guard/look_around.gd" type="Script" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -45,6 +46,20 @@ script = ExtResource( 5 )
 [node name="chase" type="Node" parent="addons/guard_behavior"]
 script = ExtResource( 7 )
 
+[node name="look_around" type="Node" parent="addons/guard_behavior"]
+script = ExtResource( 11 )
+
+[node name="start_cooldown" type="Timer" parent="addons/guard_behavior/look_around"]
+wait_time = 0.6
+one_shot = true
+
+[node name="Tween" type="Tween" parent="addons/guard_behavior/look_around"]
+playback_process_mode = 0
+
+[node name="pause_duration" type="Timer" parent="addons/guard_behavior/look_around"]
+wait_time = 0.5
+one_shot = true
+
 [node name="patrol" type="Node" parent="addons/guard_behavior"]
 script = ExtResource( 8 )
 
@@ -61,5 +76,7 @@ script = ExtResource( 10 )
 [node name="body" parent="." instance=ExtResource( 1 )]
 
 [connection signal="area_entered" from="addons/transformable" to="addons/transformable" method="_on_area_entered"]
+[connection signal="timeout" from="addons/guard_behavior/look_around/start_cooldown" to="addons/guard_behavior/look_around" method="_on_start_cooldown_timeout"]
+[connection signal="timeout" from="addons/guard_behavior/look_around/pause_duration" to="addons/guard_behavior/look_around" method="_on_pause_duration_timeout"]
 [connection signal="timeout" from="addons/guard_behavior/alert/reaction_time" to="addons/guard_behavior/alert" method="_on_reaction_time_timeout"]
 [connection signal="dead" from="body" to="." method="_on_dead"]
