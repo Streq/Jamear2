@@ -41,8 +41,6 @@ one_shot = true
 [node name="idle" type="Node" parent="addons/guard_behavior"]
 script = ExtResource( 5 )
 
-[node name="dead" type="Node" parent="addons/guard_behavior"]
-
 [node name="chase" type="Node" parent="addons/guard_behavior"]
 script = ExtResource( 7 )
 
