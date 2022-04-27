@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://util/point_to_mouse.gd" type="Script" id=1]
 [ext_resource path="res://player/player.gd" type="Script" id=2]
 [ext_resource path="res://player/consume.gd" type="Script" id=3]
+[ext_resource path="res://player/camera.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -68,5 +69,13 @@ disabled = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="addons/consume"]
 anims/RESET = SubResource( 3 )
 anims/consume = SubResource( 4 )
+
+[node name="Camera2D" type="Camera2D" parent="addons"]
+current = true
+limit_left = -456
+limit_top = -312
+limit_right = 456
+limit_bottom = 312
+script = ExtResource( 4 )
 
 [connection signal="area_entered" from="addons/consume/Area2D" to="." method="_on_consumable_entered"]

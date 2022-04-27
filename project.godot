@@ -75,7 +75,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Jamear2"
-run/main_scene="res://levels/guards/guards.tscn"
+run/main_scene="res://main.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -85,8 +85,8 @@ Levels="*res://global/levels/levels.tscn"
 
 [display]
 
-window/size/width=1216
-window/size/height=832
+window/size/width=960
+window/size/height=672
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 

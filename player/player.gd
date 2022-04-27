@@ -90,7 +90,7 @@ func _input(event):
 		body.skill.trigger()
 
 func _on_consumable_entered(area):
-	target_bod = load(area.get_parent().filename)	
+	target_bod = load(area.get_parent().filename)
 	transformation_time = max_transformation_time
 	transform_into_target()
 	

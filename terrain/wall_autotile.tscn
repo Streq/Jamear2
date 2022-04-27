@@ -976,7 +976,7 @@ points = PoolVector2Array( 16, 24, 0, 24, 0, 8, 16, 8 )
 } ]
 0/z_index = 0
 
-[node name="wall_autotile" type="TileMap"]
+[node name="wall_autotile" type="TileMap" groups=["map"]]
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 cell_tile_origin = 1
