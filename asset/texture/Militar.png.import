@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/autotile_template_3x3_minimal.png-4453b4af1105107401e02207de3521bc.stex"
+path="res://.import/Militar.png-e9dae71e4c76ab0e3d75e4be3933e626.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/texture/autotile_template_3x3_minimal.png"
-dest_files=[ "res://.import/autotile_template_3x3_minimal.png-4453b4af1105107401e02207de3521bc.stex" ]
+source_file="res://asset/texture/Militar.png"
+dest_files=[ "res://.import/Militar.png-e9dae71e4c76ab0e3d75e4be3933e626.stex" ]
 
 [params]
 

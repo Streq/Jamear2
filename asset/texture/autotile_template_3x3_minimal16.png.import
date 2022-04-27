@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/autotile_template_3x3_minimal.png-4453b4af1105107401e02207de3521bc.stex"
+path="res://.import/autotile_template_3x3_minimal16.png-98fe35d0b9167e783e0f8abb06e79911.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/texture/autotile_template_3x3_minimal.png"
-dest_files=[ "res://.import/autotile_template_3x3_minimal.png-4453b4af1105107401e02207de3521bc.stex" ]
+source_file="res://asset/texture/autotile_template_3x3_minimal16.png"
+dest_files=[ "res://.import/autotile_template_3x3_minimal16.png-98fe35d0b9167e783e0f8abb06e79911.stex" ]
 
 [params]
 

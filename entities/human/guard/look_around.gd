@@ -12,7 +12,7 @@ func enter(params):
 	look_around = false
 	start_cooldown.start()
 	body = get_parent().get_parent()
-	initial_rotation = body.rotation
+	initial_rotation = body.point_angle
 	body.dir = Vector2()
 func physics_update(delta):
 	
@@ -30,8 +30,8 @@ func physics_update(delta):
 				target_rot += look_angle
 				
 				
-			body.rotation = Math.approach(body.rotation, target_rot, delta*3.0)
-			var rotation = body.rotation
+			body.point_to(Math.approach(body.point_angle, target_rot, delta*3.0))
+			var rotation = body.point_angle
 			if abs(rotation - target_rot) < PI/90.0:
 				looks += 1
 				look_right = !look_right

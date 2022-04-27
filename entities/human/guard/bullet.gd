@@ -16,4 +16,5 @@ func _on_body_entered(body):
 
 func _on_hitbox_area_entered(area):
 	if area.owner != shooter:
+		queue_free()
 		area.owner.die()

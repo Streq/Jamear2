@@ -18,7 +18,7 @@ func physics_update(delta):
 	if target_body.is_in_group("alien") and body.get_node("vista").can_see(target_body):
 		var current_dist_vec : Vector2 = target_body.global_position - body.global_position
 			
-		body.global_rotation = (current_dist_vec).angle()
+		body.point_to(current_dist_vec.angle())
 		body.dir = Vector2()
 		
 		body.get_node("memory").remember(target_body)

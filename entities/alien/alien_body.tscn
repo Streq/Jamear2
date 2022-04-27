@@ -1,24 +1,24 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://asset/texture/wall.png" type="Texture" id=1]
+[ext_resource path="res://asset/texture/Alien.png" type="Texture" id=1]
 [ext_resource path="res://vision/vista.tscn" type="PackedScene" id=2]
 [ext_resource path="res://entities/body.gd" type="Script" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 8.0
+radius = 3.0
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8, 8 )
 
 [node name="alien_body" type="KinematicBody2D" groups=["alien"]]
+collision_layer = 8
 script = ExtResource( 3 )
-speed = 150.0
+speed = 100.0
 
 [node name="display" type="YSort" parent="."]
 
 [node name="Sprite" type="Sprite" parent="display"]
-modulate = Color( 0, 0.0156863, 1, 1 )
-position = Vector2( -8, -8 )
+position = Vector2( -24, -28 )
 texture = ExtResource( 1 )
 centered = false
 
