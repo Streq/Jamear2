@@ -29,12 +29,13 @@ func transform_into(new_body: KinematicBody2D):
 		var transform = old_body.global_transform
 		remove_child(old_body)
 		add_child(new_body)
+#		body.set_as_toplevel(true)
 		new_body.global_transform = transform
 		old_body.queue_free()
 	else:
 		add_child(new_body)
-		new_body.transform = Transform2D.IDENTITY
-		
+#		new_body.set_as_toplevel(true)
+		new_body.global_transform = global_transform
 	body = new_body
 	body.connect("dead", self, "_on_dead")
 	var vision = body.get_node("vista")

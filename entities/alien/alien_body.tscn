@@ -14,9 +14,13 @@ extents = Vector2( 8, 8 )
 script = ExtResource( 3 )
 speed = 150.0
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="display" type="YSort" parent="."]
+
+[node name="Sprite" type="Sprite" parent="display"]
 modulate = Color( 0, 0.0156863, 1, 1 )
+position = Vector2( -8, -8 )
 texture = ExtResource( 1 )
+centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

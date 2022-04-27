@@ -85,10 +85,8 @@ Levels="*res://global/levels/levels.tscn"
 
 [display]
 
-window/size/width=400
-window/size/height=400
-window/size/test_width=800
-window/size/test_height=800
+window/size/width=640
+window/size/height=640
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 

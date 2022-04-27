@@ -69,7 +69,4 @@ disabled = true
 anims/RESET = SubResource( 3 )
 anims/consume = SubResource( 4 )
 
-[node name="Camera2D" type="Camera2D" parent="addons"]
-current = true
-
 [connection signal="area_entered" from="addons/consume/Area2D" to="." method="_on_consumable_entered"]
