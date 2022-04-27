@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://player/camera.gd" type="Script" id=2]
 [ext_resource path="res://levels/guards/patrol_path.gd" type="Script" id=3]
 [ext_resource path="res://entities/goal_zone/goal_zone.tscn" type="PackedScene" id=4]
 [ext_resource path="res://HUD/time_bar.gd" type="Script" id=5]
@@ -34,7 +35,8 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_as_outline = 1
 text = "wasd o flechitas para moverse, click izquierdo para comerse a alguien, 
 click derecho para usar su habilidad
-espacio para destransformarse"
+espacio para destransformarse
+zoom con + y -"
 
 [node name="HUD" type="CanvasLayer" parent="."]
 layer = 10
@@ -49,6 +51,7 @@ position = Vector2( -244, -254 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+script = ExtResource( 2 )
 
 [node name="goal_zone" parent="." instance=ExtResource( 4 )]
 position = Vector2( 296, 296 )
@@ -58,6 +61,12 @@ collision_mask = 2
 [node name="guard2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 141, 161 )
 rotation = 0.523598
+
+[node name="guard_behavior" parent="guard2/addons" index="1"]
+start_state = "patrol"
+
+[node name="patrol" parent="guard2/addons/guard_behavior" index="4"]
+patrol_path = NodePath("../../../../patrol_path2")
 
 [node name="guard3" parent="." instance=ExtResource( 6 )]
 position = Vector2( 258, 45 )
@@ -70,8 +79,14 @@ start_state = "patrol"
 patrol_path = NodePath("../../../../patrol_path")
 
 [node name="guard4" parent="." instance=ExtResource( 6 )]
-position = Vector2( -167, -122 )
+position = Vector2( -285, -175 )
 rotation = -0.523598
+
+[node name="guard_behavior" parent="guard4/addons" index="1"]
+start_state = "patrol"
+
+[node name="patrol" parent="guard4/addons/guard_behavior" index="4"]
+patrol_path = NodePath("../../../../patrol_path3")
 
 [node name="patrol_path" type="Node2D" parent="."]
 script = ExtResource( 3 )
@@ -88,7 +103,72 @@ position = Vector2( -153, 233 )
 [node name="3" type="Position2D" parent="patrol_path"]
 position = Vector2( -149, 45 )
 
+[node name="patrol_path2" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="0" type="Position2D" parent="patrol_path2"]
+position = Vector2( 142, 224 )
+
+[node name="1" type="Position2D" parent="patrol_path2"]
+position = Vector2( -12, 225 )
+
+[node name="2" type="Position2D" parent="patrol_path2"]
+position = Vector2( -12, 178 )
+
+[node name="3" type="Position2D" parent="patrol_path2"]
+position = Vector2( -148, 178 )
+
+[node name="4" type="Position2D" parent="patrol_path2"]
+position = Vector2( -12, 178 )
+
+[node name="5" type="Position2D" parent="patrol_path2"]
+position = Vector2( -12, 225 )
+
+[node name="6" type="Position2D" parent="patrol_path2"]
+position = Vector2( 142, 225 )
+
+[node name="patrol_path3" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="0" type="Position2D" parent="patrol_path3"]
+position = Vector2( -283, -176 )
+
+[node name="1" type="Position2D" parent="patrol_path3"]
+position = Vector2( 16, -176 )
+
+[node name="2" type="Position2D" parent="patrol_path3"]
+position = Vector2( 16, -166 )
+
+[node name="3" type="Position2D" parent="patrol_path3"]
+position = Vector2( 62, -166 )
+
+[node name="4" type="Position2D" parent="patrol_path3"]
+position = Vector2( 62, -274 )
+
+[node name="5" type="Position2D" parent="patrol_path3"]
+position = Vector2( 292, -274 )
+
+[node name="6" type="Position2D" parent="patrol_path3"]
+position = Vector2( 292, -31 )
+
+[node name="7" type="Position2D" parent="patrol_path3"]
+position = Vector2( 61, -31 )
+
+[node name="8" type="Position2D" parent="patrol_path3"]
+position = Vector2( 61, -166 )
+
+[node name="9" type="Position2D" parent="patrol_path3"]
+position = Vector2( 16, -166 )
+
+[node name="10" type="Position2D" parent="patrol_path3"]
+position = Vector2( 16, -176 )
+
+[node name="11" type="Position2D" parent="patrol_path3"]
+position = Vector2( -283, -176 )
+
 [connection signal="max_transformation_time_changed" from="player" to="HUD/ProgressBar" method="set_max"]
 [connection signal="transformation_time_changed" from="player" to="HUD/ProgressBar" method="set_value"]
 
+[editable path="guard2"]
 [editable path="guard3"]
+[editable path="guard4"]

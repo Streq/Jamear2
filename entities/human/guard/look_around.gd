@@ -18,15 +18,18 @@ func physics_update(delta):
 	
 	var target_body = get_tree().get_nodes_in_group("player")[0].body
 	if target_body.is_in_group("alien") and body.get_node("vista").can_see(target_body):
-		emit_signal("finish", "shoot_on_sight", null)
+		emit_signal("finish", "alert", null)
+		body.get_node("memory").remember(target_body)
 	elif look_around:
-		if looks < 20:
+		if looks < 2:
 			var target_rot = initial_rotation
-			var look_angle = deg2rad(90.0)
-			if look_right:
-				target_rot += look_angle
+			if looks == 0:
+				target_rot = body.get_node("memory").target_direction.angle()
 			else:
-				target_rot -= look_angle
+				var look_angle = deg2rad(180.0)
+				target_rot += look_angle
+				
+				
 			body.rotation = Math.approach(body.rotation, target_rot, delta*3.0)
 			var rotation = body.rotation
 			if abs(rotation - target_rot) < PI/90.0:

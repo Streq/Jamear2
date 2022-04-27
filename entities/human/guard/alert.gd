@@ -20,5 +20,6 @@ func physics_update(delta):
 			
 		body.global_rotation = (current_dist_vec).angle()
 		body.dir = Vector2()
-		body.get_node("memory").target_position = target_body.global_position
+		
+		body.get_node("memory").remember(target_body)
 		
