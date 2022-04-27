@@ -39,7 +39,7 @@ tracks/0/keys = {
 "values": [ false, true ]
 }
 
-[node name="player" type="Node2D" groups=["player"]]
+[node name="player" type="YSort" groups=["player"]]
 script = ExtResource( 2 )
 
 [node name="addons" type="Node" parent="."]
@@ -68,5 +68,8 @@ disabled = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="addons/consume"]
 anims/RESET = SubResource( 3 )
 anims/consume = SubResource( 4 )
+
+[node name="Camera2D" type="Camera2D" parent="addons"]
+current = true
 
 [connection signal="area_entered" from="addons/consume/Area2D" to="." method="_on_consumable_entered"]

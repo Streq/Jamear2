@@ -14,7 +14,7 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 
-[node name="guard" type="Node2D"]
+[node name="guard" type="YSort"]
 script = ExtResource( 3 )
 
 [node name="addons" type="Node" parent="."]
@@ -72,6 +72,7 @@ one_shot = true
 script = ExtResource( 10 )
 
 [node name="body" parent="." instance=ExtResource( 1 )]
+z_as_relative = false
 
 [connection signal="area_entered" from="addons/transformable" to="addons/transformable" method="_on_area_entered"]
 [connection signal="timeout" from="addons/guard_behavior/look_around/start_cooldown" to="addons/guard_behavior/look_around" method="_on_start_cooldown_timeout"]
