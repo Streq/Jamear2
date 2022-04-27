@@ -3,10 +3,11 @@ extends Node2D
 signal transformation_time_changed(current_value)
 signal max_transformation_time_changed(current_value)
 
+export var max_transformation_time = 5.0 setget set_max_transformation_time
+
 var body : KinematicBody2D = null
 onready var addons = $addons.get_children()
 var transformation_time = 5.0 setget set_transformation_time
-var max_transformation_time = 5.0 setget set_max_transformation_time
 var transformed = false
 
 onready var alien_bod : PackedScene = preload("res://entities/alien/alien_body.tscn")
