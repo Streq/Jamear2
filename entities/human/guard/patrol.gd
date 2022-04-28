@@ -1,7 +1,7 @@
 extends State
 
 export (NodePath) onready var patrol_path = get_node(patrol_path) as PatrolPath if patrol_path else null
-
+var responds_to_alarm = true
 export var index = 0
 
 func physics_update(delta:float):

@@ -159,6 +159,7 @@ zoom_out={
 2d_physics/layer_4="body"
 2d_physics/layer_5="hurtbox"
 2d_physics/layer_6="vent"
+2d_physics/layer_7="button"
 
 [physics]
 

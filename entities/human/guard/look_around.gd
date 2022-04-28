@@ -3,6 +3,7 @@ extends State
 onready var start_cooldown = $start_cooldown
 onready var pause_duration = $pause_duration
 
+var responds_to_alarm = true
 var look_around := false
 var look_right := false
 var looks := 0
@@ -24,7 +25,11 @@ func physics_update(delta):
 		if looks < 2:
 			var target_rot = initial_rotation
 			if looks == 0:
-				target_rot = body.get_node("memory").target_direction.angle()
+				var memory = body.get_node("memory")
+				if memory.target_direction:
+					target_rot = memory.target_direction.angle()
+				else: 
+					target_rot = initial_rotation
 			else:
 				var look_angle = deg2rad(180.0)
 				target_rot += look_angle

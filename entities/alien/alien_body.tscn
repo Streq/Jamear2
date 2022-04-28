@@ -202,11 +202,18 @@ shape = SubResource( 2 )
 [node name="skill" type="Node2D" parent="."]
 script = ExtResource( 4 )
 
-[node name="Area2D" type="Area2D" parent="skill"]
+[node name="vent_area" type="Area2D" parent="skill"]
 collision_layer = 0
 collision_mask = 32
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="skill/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="skill/vent_area"]
+shape = SubResource( 3 )
+
+[node name="button_area" type="Area2D" parent="skill"]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="skill/button_area"]
 shape = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
