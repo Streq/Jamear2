@@ -182,6 +182,7 @@ vframes = 3
 frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -2 )
 shape = SubResource( 1 )
 
 [node name="vista" parent="." instance=ExtResource( 2 )]

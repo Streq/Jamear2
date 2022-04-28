@@ -1,15 +1,20 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://global/levels/levels.gd" type="Script" id=1]
 [ext_resource path="res://levels/guards/guards.tscn" type="PackedScene" id=2]
 [ext_resource path="res://global/levels/level.gd" type="Script" id=3]
 [ext_resource path="res://test/vent/vent_test.tscn" type="PackedScene" id=4]
+[ext_resource path="res://test/furniture/furniture_test.tscn" type="PackedScene" id=5]
 [ext_resource path="res://levels/guards/medium.tscn" type="PackedScene" id=6]
 
 [node name="Levels" type="Node"]
 script = ExtResource( 1 )
 
 [node name="0" type="Node" parent="."]
+script = ExtResource( 3 )
+scene = ExtResource( 5 )
+
+[node name="2" type="Node" parent="."]
 script = ExtResource( 3 )
 scene = ExtResource( 4 )
 
