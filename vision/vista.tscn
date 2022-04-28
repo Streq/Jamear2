@@ -50,6 +50,8 @@ script = ExtResource( 4 )
 
 [node name="Light2D" type="Light2D" parent="vista_npc"]
 texture = SubResource( 2 )
+color = Color( 1, 0, 0, 1 )
+energy = 0.55
 range_layer_min = -5
 range_layer_max = 5
 range_item_cull_mask = 2
