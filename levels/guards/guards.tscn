@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://terrain/vent_connection.tscn" type="PackedScene" id=2]
 [ext_resource path="res://levels/guards/patrol_path.gd" type="Script" id=3]
 [ext_resource path="res://entities/goal_zone/goal_zone.tscn" type="PackedScene" id=4]
 [ext_resource path="res://HUD/time_bar.gd" type="Script" id=5]
@@ -179,5 +180,26 @@ texture = ExtResource( 9 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="coso"]
 shape = SubResource( 1 )
 
+[node name="vent_connection" parent="." instance=ExtResource( 2 )]
+position = Vector2( 16, 48 )
+
+[node name="ventA" parent="vent_connection" index="0"]
+position = Vector2( -40, -56 )
+
+[node name="ventB" parent="vent_connection" index="1"]
+position = Vector2( -40, -8 )
+
+[node name="vent_connection2" parent="." instance=ExtResource( 2 )]
+position = Vector2( -408, -192 )
+
+[node name="ventA" parent="vent_connection2" index="0"]
+position = Vector2( -40, -56 )
+
+[node name="ventB" parent="vent_connection2" index="1"]
+position = Vector2( -40, -8 )
+
 [connection signal="max_transformation_time_changed" from="player" to="HUD/ProgressBar" method="set_max"]
 [connection signal="transformation_time_changed" from="player" to="HUD/ProgressBar" method="set_value"]
+
+[editable path="vent_connection"]
+[editable path="vent_connection2"]

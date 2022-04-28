@@ -3,7 +3,7 @@
 [ext_resource path="res://global/levels/levels.gd" type="Script" id=1]
 [ext_resource path="res://levels/guards/guards.tscn" type="PackedScene" id=2]
 [ext_resource path="res://global/levels/level.gd" type="Script" id=3]
-[ext_resource path="res://levels/guards/small.tscn" type="PackedScene" id=4]
+[ext_resource path="res://test/vent/vent_test.tscn" type="PackedScene" id=4]
 [ext_resource path="res://levels/guards/medium.tscn" type="PackedScene" id=6]
 
 [node name="Levels" type="Node"]
