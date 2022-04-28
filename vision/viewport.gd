@@ -1,4 +1,6 @@
 extends Viewport
 
 func _ready():
-	self.size = get_viewport().size*2*sqrt(2)
+	var size = get_parent().get_viewport().size
+	var final_size = size*2*sqrt(2)
+	self.size = final_size

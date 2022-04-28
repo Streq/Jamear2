@@ -9,6 +9,8 @@ func _ready():
 	reparent_addons(body)
 	body.vista.is_jugador = is_player
 	body.global_rotation = 0
+	body.point_to(global_rotation)
+	
 
 func reparent_addons(to):
 	for a in addons:

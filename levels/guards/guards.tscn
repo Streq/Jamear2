@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://terrain/vent_connection.tscn" type="PackedScene" id=2]
@@ -8,9 +8,19 @@
 [ext_resource path="res://entities/human/guard/guard.tscn" type="PackedScene" id=6]
 [ext_resource path="res://terrain/wall_autotile.tscn" type="PackedScene" id=7]
 [ext_resource path="res://terrain/floor_autotile.tscn" type="PackedScene" id=8]
+[ext_resource path="res://terrain/wall_vent_connection.tscn" type="PackedScene" id=9]
 [ext_resource path="res://terrain/navigation_tilemap.tscn" type="PackedScene" id=11]
 
 [node name="Node2D" type="YSort"]
+
+[node name="wall_vent_connection" parent="." instance=ExtResource( 9 )]
+position = Vector2( -280, -288 )
+
+[node name="ventA" parent="wall_vent_connection" index="0"]
+position = Vector2( 0, -24 )
+
+[node name="ventB" parent="wall_vent_connection" index="1"]
+position = Vector2( 688, -24 )
 
 [node name="floor_autotile" parent="." instance=ExtResource( 8 )]
 light_mask = 3
@@ -186,5 +196,6 @@ position = Vector2( -40, -8 )
 [connection signal="max_transformation_time_changed" from="player" to="HUD/ProgressBar" method="set_max"]
 [connection signal="transformation_time_changed" from="player" to="HUD/ProgressBar" method="set_value"]
 
+[editable path="wall_vent_connection"]
 [editable path="vent_connection"]
 [editable path="vent_connection2"]

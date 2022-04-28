@@ -76,6 +76,7 @@ limit_left = -456
 limit_top = -312
 limit_right = 456
 limit_bottom = 312
+smoothing_enabled = true
 script = ExtResource( 4 )
 
 [connection signal="area_entered" from="addons/consume/Area2D" to="." method="_on_consumable_entered"]
