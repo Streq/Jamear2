@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://vision/vista.tscn" type="PackedScene" id=1]
+[ext_resource path="res://terrain/alarm_button.gd" type="Script" id=2]
+[ext_resource path="res://asset/texture/wall.png" type="Texture" id=3]
+[ext_resource path="res://entities/camera/security_camera.gd" type="Script" id=4]
+[ext_resource path="res://state_machine/state_machine.tscn" type="PackedScene" id=5]
+[ext_resource path="res://entities/camera/detected.gd" type="Script" id=6]
+[ext_resource path="res://entities/camera/pause.gd" type="Script" id=7]
+[ext_resource path="res://entities/camera/looking_around.gd" type="Script" id=8]
+
+[node name="security_camera" type="Node2D"]
+script = ExtResource( 4 )
+speed_degrees = 35
+
+[node name="alarm" type="Node2D" parent="." groups=["alarm"]]
+script = ExtResource( 2 )
+
+[node name="state_machine" parent="." instance=ExtResource( 5 )]
+start_state = "looking_around"
+
+[node name="looking_around" type="Node" parent="state_machine"]
+script = ExtResource( 8 )
+
+[node name="detected" type="Node" parent="state_machine"]
+script = ExtResource( 6 )
+
+[node name="pause" type="Node" parent="state_machine"]
+script = ExtResource( 7 )
+
+[node name="Timer" type="Timer" parent="state_machine/pause"]
+process_mode = 0
+one_shot = true
+
+[node name="pivot" type="Node2D" parent="."]
+
+[node name="vista" parent="pivot" instance=ExtResource( 1 )]
+radius = 180.0
+angle_degs = 45.0
+
+[node name="Sprite" type="Sprite" parent="pivot"]
+scale = Vector2( 0.625, 0.375 )
+texture = ExtResource( 3 )
