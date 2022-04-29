@@ -235,5 +235,7 @@ script = ExtResource( 7 )
 [node name="exit_vent" type="Node" parent="state_machine"]
 script = ExtResource( 8 )
 
+[node name="AnimationPlayerExpressions" type="AnimationPlayer" parent="."]
+
 [connection signal="vent" from="skill" to="state_machine/idle" method="_on_vent"]
 [connection signal="vent" from="skill" to="state_machine/vent" method="_on_vent"]

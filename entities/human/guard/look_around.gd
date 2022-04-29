@@ -18,20 +18,21 @@ func enter(params):
 func physics_update(delta):
 	
 	var target_body = get_tree().get_nodes_in_group("player")[0].body
-	if target_body.is_in_group("alien") and body.get_node("vista").can_see(target_body):
+	var memory = body.get_node("memory")
+	
+	if memory.suspects(target_body) and body.get_node("vista").can_see(target_body):
 		emit_signal("finish", "alert", null)
-		body.get_node("memory").remember(target_body)
+		memory.remember(target_body)
 	elif look_around:
-		if looks < 2:
+		if looks < 20:
 			var target_rot = initial_rotation
 			if looks == 0:
-				var memory = body.get_node("memory")
 				if memory.target_direction:
 					target_rot = memory.target_direction.angle()
 				else: 
 					target_rot = initial_rotation
 			else:
-				var look_angle = deg2rad(180.0)
+				var look_angle = deg2rad(160.0)
 				target_rot += look_angle
 				
 				

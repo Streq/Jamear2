@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://entities/human/guard/guard_body.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/transformable.gd" type="Script" id=2]
@@ -12,11 +12,14 @@
 [ext_resource path="res://entities/human/guard/memory.gd" type="Script" id=10]
 [ext_resource path="res://entities/human/guard/look_around.gd" type="Script" id=11]
 [ext_resource path="res://entities/human/guard/look_for_patrol.gd" type="Script" id=12]
-[ext_resource path="res://entities/body.gd" type="Script" id=13]
+[ext_resource path="res://entities/human/guard/goto_curious.gd" type="Script" id=13]
 [ext_resource path="res://entities/human/guard/alarm_detector.gd" type="Script" id=14]
 [ext_resource path="res://entities/human/guard/goto_angry.gd" type="Script" id=15]
+[ext_resource path="res://entities/human/hearing.gd" type="Script" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="CircleShape2D" id=2]
 
 [node name="guard" type="YSort"]
 script = ExtResource( 3 )
@@ -75,6 +78,9 @@ one_shot = true
 [node name="goto_angry" type="Node" parent="addons/guard_behavior"]
 script = ExtResource( 15 )
 
+[node name="goto_curious" type="Node" parent="addons/guard_behavior"]
+script = ExtResource( 13 )
+
 [node name="memory" type="Node" parent="addons"]
 script = ExtResource( 10 )
 
@@ -82,9 +88,17 @@ script = ExtResource( 10 )
 script = ExtResource( 14 )
 mind_state = NodePath("../guard_behavior")
 
+[node name="hearing" type="Area2D" parent="addons"]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource( 16 )
+mind_state = NodePath("../guard_behavior")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="addons/hearing"]
+shape = SubResource( 2 )
+
 [node name="body" parent="." instance=ExtResource( 1 )]
 z_as_relative = false
-script = ExtResource( 13 )
 
 [node name="look_for_patrol" type="Node" parent="."]
 script = ExtResource( 12 )

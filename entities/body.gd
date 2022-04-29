@@ -6,7 +6,7 @@ onready var display = $display
 onready var vista = $vista
 onready var skill = $skill if has_node("skill") else Skill.new()
 onready var anim = $AnimationPlayer
-
+onready var expression_anim = $AnimationPlayerExpressions
 export var speed : float
 var velocity := Vector2()
 var dir := Vector2()

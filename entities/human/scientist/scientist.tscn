@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
+[ext_resource path="res://entities/body.gd" type="Script" id=1]
 [ext_resource path="res://entities/human/guard/idle.gd" type="Script" id=2]
 [ext_resource path="res://state_machine/state_machine.tscn" type="PackedScene" id=3]
 [ext_resource path="res://entities/human/scientist/alert.gd" type="Script" id=4]
@@ -67,6 +68,7 @@ script = ExtResource( 11 )
 script = ExtResource( 8 )
 
 [node name="body" parent="." instance=ExtResource( 9 )]
+script = ExtResource( 1 )
 speed = 85.0
 
 [connection signal="area_entered" from="addons/transformable" to="addons/transformable" method="_on_area_entered"]
