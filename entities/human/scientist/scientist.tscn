@@ -1,0 +1,76 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://entities/human/guard/idle.gd" type="Script" id=2]
+[ext_resource path="res://state_machine/state_machine.tscn" type="PackedScene" id=3]
+[ext_resource path="res://entities/human/scientist/alert.gd" type="Script" id=4]
+[ext_resource path="res://entities/human/human.gd" type="Script" id=5]
+[ext_resource path="res://entities/transformable.gd" type="Script" id=6]
+[ext_resource path="res://entities/human/guard/look_around.gd" type="Script" id=7]
+[ext_resource path="res://entities/human/guard/look_for_patrol.gd" type="Script" id=8]
+[ext_resource path="res://entities/human/scientist/scientist_body.tscn" type="PackedScene" id=9]
+[ext_resource path="res://entities/human/scientist/patrol.gd" type="Script" id=10]
+[ext_resource path="res://entities/human/guard/memory.gd" type="Script" id=11]
+[ext_resource path="res://entities/human/scientist/sound_the_alarm.gd" type="Script" id=12]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="scientist" type="YSort"]
+script = ExtResource( 5 )
+
+[node name="addons" type="Node" parent="."]
+
+[node name="transformable" type="Area2D" parent="addons"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="addons/transformable"]
+shape = SubResource( 1 )
+
+[node name="behavior" parent="addons" instance=ExtResource( 3 )]
+start_state = "patrol"
+
+[node name="sound_the_alarm" type="Node" parent="addons/behavior"]
+script = ExtResource( 12 )
+
+[node name="idle" type="Node" parent="addons/behavior"]
+script = ExtResource( 2 )
+
+[node name="look_around" type="Node" parent="addons/behavior"]
+script = ExtResource( 7 )
+
+[node name="start_cooldown" type="Timer" parent="addons/behavior/look_around"]
+wait_time = 0.6
+one_shot = true
+
+[node name="Tween" type="Tween" parent="addons/behavior/look_around"]
+playback_process_mode = 0
+
+[node name="pause_duration" type="Timer" parent="addons/behavior/look_around"]
+wait_time = 0.5
+one_shot = true
+
+[node name="patrol" type="Node" parent="addons/behavior"]
+script = ExtResource( 10 )
+
+[node name="alert" type="Node" parent="addons/behavior"]
+script = ExtResource( 4 )
+
+[node name="reaction_time" type="Timer" parent="addons/behavior/alert"]
+wait_time = 0.5
+one_shot = true
+
+[node name="memory" type="Node" parent="addons"]
+script = ExtResource( 11 )
+
+[node name="look_for_patrol" type="Node" parent="."]
+script = ExtResource( 8 )
+
+[node name="body" parent="." instance=ExtResource( 9 )]
+speed = 85.0
+
+[connection signal="area_entered" from="addons/transformable" to="addons/transformable" method="_on_area_entered"]
+[connection signal="timeout" from="addons/behavior/look_around/start_cooldown" to="addons/behavior/look_around" method="_on_start_cooldown_timeout"]
+[connection signal="timeout" from="addons/behavior/look_around/pause_duration" to="addons/behavior/look_around" method="_on_pause_duration_timeout"]
+[connection signal="timeout" from="addons/behavior/alert/reaction_time" to="addons/behavior/alert" method="_on_reaction_time_timeout"]
+[connection signal="patrol_found" from="look_for_patrol" to="addons/behavior/patrol" method="set_patrol"]
