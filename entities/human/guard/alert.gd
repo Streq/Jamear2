@@ -6,6 +6,8 @@ func enter(params):
 	body = get_parent().get_parent()
 	$reaction_time.start()
 	body.expression_anim.play("alert")
+	body.memory.anxious = true
+
 
 
 func exit():

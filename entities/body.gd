@@ -24,3 +24,5 @@ func point_to(global_rotation):
 	skill.global_rotation = global_rotation
 	display.scale.x = 1.0-float(cos(global_rotation)<0)*2
 	point_angle = global_rotation
+func look_at_position(global_pos):
+	point_to(self.global_position.angle_to_point(global_pos))

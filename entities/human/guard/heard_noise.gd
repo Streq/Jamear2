@@ -6,11 +6,17 @@ var levelNavigation: Navigation2D = null
 var target := Vector2()
 var body : KinematicBody2D
 onready var timer = $reaction_time
+var responds_to_alarm = true
+var responds_to_noise = true
 func _enter(params):
 	target = params[0]
 	body = get_parent().get_parent()
 	body.expression_anim.play("curious")
-	timer.start()
+	if body.memory.anxious:
+		timer.start(0.01)
+	else:
+		timer.start()
+	body.memory.anxious = true
 	pass
 
 func _exit():

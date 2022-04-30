@@ -8,15 +8,16 @@ func _on_scream(scream, target):
 		
 
 func _on_noise(noise):
-	if "responds_to_alarm" in mind_state.current:
-		if can_see_source_of_noise(noise):
-			var target_body = noise.emisor
-			if target_body.get_parent().is_in_group("player"):
-				var body = get_parent()
-				body.get_node("memory").remember(target_body)
-		else:
-			mind_state.current.emit_signal("finish", "heard_noise", [noise.global_position])
-	
+	var body = get_parent()
+	var target_body = noise.emisor
+		
+	if can_see_source_of_noise(noise):
+		if target_body.get_parent().is_in_group("player"):
+			body.memory.remember(target_body)
+	elif "responds_to_noise" in mind_state.current:
+		body.look_at_position(target_body.global_position)
+		mind_state.current.emit_signal("finish", "heard_noise", [noise.global_position])
+		
 func can_see_source_of_noise(noise):
 	var body = get_parent()
 	

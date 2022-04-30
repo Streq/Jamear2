@@ -1,7 +1,7 @@
 extends State
 
 var responds_to_alarm = true
-
+var responds_to_noise = true
 func physics_update(delta):
 	var target_body = get_tree().get_nodes_in_group("player")[0].body
 	var body = get_parent().get_parent()

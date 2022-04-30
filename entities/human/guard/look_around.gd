@@ -4,11 +4,13 @@ onready var start_cooldown = $start_cooldown
 onready var pause_duration = $pause_duration
 
 var responds_to_alarm = true
+var responds_to_noise = true
 var look_around := false
 var look_right := false
 var looks := 0
 var initial_rotation : float
 var body = null
+
 func enter(params):
 	look_around = false
 	start_cooldown.start()

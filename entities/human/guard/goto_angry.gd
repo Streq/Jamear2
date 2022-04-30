@@ -5,6 +5,7 @@ var new_path: Array = []
 var levelNavigation: Navigation2D = null
 var target := Vector2()
 var body : KinematicBody2D
+
 func _enter(params):
 	target = params[0]
 	body = get_parent().get_parent()
@@ -14,7 +15,7 @@ func _enter(params):
 func _physics_update(delta):
 	var target_body = get_tree().get_nodes_in_group("player")[0].body
 	var body = get_parent().get_parent()
-	if target_body.is_in_group("alien") and body.get_node("vista").can_see(target_body):
+	if body.memory.suspects(target_body) and body.get_node("vista").can_see(target_body):
 		emit_signal("finish", "shoot_on_sight", null)
 	elif (target - body.global_position).length_squared() > 200.0:
 		generate_path()

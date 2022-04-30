@@ -6,6 +6,7 @@ var levelNavigation: Navigation2D = null
 var target := Vector2()
 var body : KinematicBody2D
 var responds_to_alarm = true
+var responds_to_noise = true
 func _enter(params):
 	target = params[0]
 	body = get_parent().get_parent()
