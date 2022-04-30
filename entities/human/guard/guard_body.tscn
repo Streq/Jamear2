@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://entities/human/human_body.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/human/guard/gun.gd" type="Script" id=2]
@@ -7,7 +7,7 @@
 [ext_resource path="res://entities/human/guard/noise_area.gd" type="Script" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 230.313
+radius = 150.0
 
 [sub_resource type="Animation" id=2]
 resource_name = "aim"
@@ -21,10 +21,8 @@ resource_name = "shoot"
 [sub_resource type="Animation" id=5]
 resource_name = "walk"
 
-[sub_resource type="CircleShape2D" id=6]
-radius = 88.459
-
 [node name="guard_body" instance=ExtResource( 1 )]
+collision_mask = 9
 
 [node name="skill" type="Node2D" parent="." index="3"]
 script = ExtResource( 2 )
@@ -47,8 +45,3 @@ anims/aim = SubResource( 2 )
 anims/idle = SubResource( 3 )
 anims/shoot = SubResource( 4 )
 anims/walk = SubResource( 5 )
-
-[node name="yell_range" type="Area2D" parent="." index="7"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="yell_range" index="0"]
-shape = SubResource( 6 )

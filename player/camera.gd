@@ -4,7 +4,7 @@ export var max_zoom_level = 3
 export var  min_zoom_level = 1
 
 func _ready():
-	zoom = Vector2(1,1)/zoom_level
+#	zoom = Vector2(1,1)/zoom_level
 	var map : TileMap = get_tree().get_nodes_in_group("map")[0]
 	var tile_rect := map.get_used_rect()
 	
@@ -26,4 +26,4 @@ func _input(event):
 		
 func set_zoom_level(val):
 	zoom_level = clamp(val, min_zoom_level, max_zoom_level)
-	zoom = Vector2(1,1)/zoom_level
+#	zoom = Vector2(1,1)/zoom_level

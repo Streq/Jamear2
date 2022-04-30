@@ -14,3 +14,4 @@ func remember(body):
 
 func suspects(body):
 	return suspect_body == body or body.is_in_group("alien")
+

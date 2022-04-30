@@ -14,8 +14,9 @@ func _ready():
 
 func reparent_addons(to):
 	for a in addons:
+		if a.name in to:
+			to[a.name] = a
 		NodeUtils.reparent(a,to)
-
 
 
 func _on_dead():

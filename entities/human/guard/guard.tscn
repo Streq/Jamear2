@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://entities/human/guard/guard_body.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/transformable.gd" type="Script" id=2]
@@ -12,14 +12,20 @@
 [ext_resource path="res://entities/human/guard/memory.gd" type="Script" id=10]
 [ext_resource path="res://entities/human/guard/look_around.gd" type="Script" id=11]
 [ext_resource path="res://entities/human/guard/look_for_patrol.gd" type="Script" id=12]
-[ext_resource path="res://entities/human/guard/goto_curious.gd" type="Script" id=13]
+[ext_resource path="res://entities/human/guard/heard_alarm.gd" type="Script" id=13]
 [ext_resource path="res://entities/human/guard/alarm_detector.gd" type="Script" id=14]
 [ext_resource path="res://entities/human/guard/goto_angry.gd" type="Script" id=15]
 [ext_resource path="res://entities/human/hearing.gd" type="Script" id=16]
+[ext_resource path="res://entities/human/guard/goto_curious.gd" type="Script" id=17]
+[ext_resource path="res://entities/human/guard/heard_noise.gd" type="Script" id=18]
+[ext_resource path="res://entities/human/scientist/yell.gd" type="Script" id=19]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 [sub_resource type="CircleShape2D" id=2]
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 125.0
 
 [node name="guard" type="YSort"]
 script = ExtResource( 3 )
@@ -79,7 +85,21 @@ one_shot = true
 script = ExtResource( 15 )
 
 [node name="goto_curious" type="Node" parent="addons/guard_behavior"]
+script = ExtResource( 17 )
+
+[node name="heard_alarm" type="Node" parent="addons/guard_behavior"]
 script = ExtResource( 13 )
+
+[node name="reaction_time" type="Timer" parent="addons/guard_behavior/heard_alarm"]
+wait_time = 0.5
+one_shot = true
+
+[node name="heard_noise" type="Node" parent="addons/guard_behavior"]
+script = ExtResource( 18 )
+
+[node name="reaction_time" type="Timer" parent="addons/guard_behavior/heard_noise"]
+wait_time = 0.5
+one_shot = true
 
 [node name="memory" type="Node" parent="addons"]
 script = ExtResource( 10 )
@@ -97,6 +117,17 @@ mind_state = NodePath("../guard_behavior")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="addons/hearing"]
 shape = SubResource( 2 )
 
+[node name="yell" type="Node2D" parent="addons"]
+visible = false
+script = ExtResource( 19 )
+
+[node name="Area2D" type="Area2D" parent="addons/yell"]
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="addons/yell/Area2D"]
+shape = SubResource( 3 )
+
 [node name="body" parent="." instance=ExtResource( 1 )]
 z_as_relative = false
 
@@ -107,5 +138,7 @@ script = ExtResource( 12 )
 [connection signal="timeout" from="addons/guard_behavior/look_around/start_cooldown" to="addons/guard_behavior/look_around" method="_on_start_cooldown_timeout"]
 [connection signal="timeout" from="addons/guard_behavior/look_around/pause_duration" to="addons/guard_behavior/look_around" method="_on_pause_duration_timeout"]
 [connection signal="timeout" from="addons/guard_behavior/alert/reaction_time" to="addons/guard_behavior/alert" method="_on_reaction_time_timeout"]
+[connection signal="timeout" from="addons/guard_behavior/heard_alarm/reaction_time" to="addons/guard_behavior/heard_alarm" method="_on_reaction_time_timeout"]
+[connection signal="timeout" from="addons/guard_behavior/heard_noise/reaction_time" to="addons/guard_behavior/heard_noise" method="_on_reaction_time_timeout"]
 [connection signal="dead" from="body" to="." method="_on_dead"]
 [connection signal="patrol_found" from="look_for_patrol" to="addons/guard_behavior/patrol" method="set_patrol"]

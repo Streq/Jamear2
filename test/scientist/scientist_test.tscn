@@ -66,6 +66,9 @@ position = Vector2( 104, -152 )
 [node name="guard" parent="." instance=ExtResource( 9 )]
 position = Vector2( 114, 71 )
 
+[node name="guard4" parent="." instance=ExtResource( 9 )]
+position = Vector2( -27, -116 )
+
 [node name="guard2" parent="." instance=ExtResource( 9 )]
 position = Vector2( 80, 93 )
 

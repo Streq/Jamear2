@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Mantecold_Alien_Move.ogg-75cd4e09266e77d5ec1ac07cd5c2425e.oggstr"
+
+[deps]
+
+source_file="res://asset/audio/Sfx/Mantecold_Alien_Move.ogg"
+dest_files=[ "res://.import/Mantecold_Alien_Move.ogg-75cd4e09266e77d5ec1ac07cd5c2425e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

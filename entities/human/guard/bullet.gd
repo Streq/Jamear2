@@ -15,6 +15,11 @@ func _on_body_entered(body):
 
 
 func _on_hitbox_area_entered(area):
-	if area.owner != shooter:
+	if is_instance_valid(shooter) and is_instance_valid(area):
+		var target_entity = area.owner.get_parent()
+		var shooter_entity = shooter.get_parent()
+		if area.owner != shooter and target_entity.is_player != shooter_entity.is_player:
+			queue_free()
+			area.owner.die()
+	else:
 		queue_free()
-		area.owner.die()

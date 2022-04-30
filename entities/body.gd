@@ -11,8 +11,8 @@ export var speed : float
 var velocity := Vector2()
 var dir := Vector2()
 var point_angle = 0
-
-
+var memory
+var yell
 
 func die():
 	emit_signal("dead")

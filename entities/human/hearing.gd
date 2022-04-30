@@ -4,7 +4,7 @@ export (NodePath) onready var mind_state = get_node(mind_state) as StateMachine
 
 func _on_scream(scream, target):
 	if "responds_to_alarm" in mind_state.current:
-		mind_state.current.emit_signal("finish", "goto_angry", [target.global_position])
+		mind_state.current.emit_signal("finish", "heard_alarm", [target])
 		
 
 func _on_noise(noise):
@@ -15,7 +15,7 @@ func _on_noise(noise):
 				var body = get_parent()
 				body.get_node("memory").remember(target_body)
 		else:
-			mind_state.current.emit_signal("finish", "goto_curious", [noise.global_position])
+			mind_state.current.emit_signal("finish", "heard_noise", [noise.global_position])
 	
 func can_see_source_of_noise(noise):
 	var body = get_parent()

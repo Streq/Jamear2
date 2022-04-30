@@ -18,7 +18,7 @@ func _physics_update(delta):
 		generate_path()
 		navigate()
 	else:
-		body.skill.trigger()
+		body.skill.trigger_target(body.memory.target_position)
 
 func _ready():
 	yield(get_tree(),"idle_frame")

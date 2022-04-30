@@ -1,6 +1,9 @@
 extends Node
 
-signal alarm(who)
+signal alarm(where)
 
 func activate():
-	emit_signal("alarm", self)
+	emit_signal("alarm", self.global_position)
+
+func activate_target(target_position):
+	emit_signal("alarm", target_position)

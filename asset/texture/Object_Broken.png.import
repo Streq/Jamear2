@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/UI_Transformation.png-59e412843213feb3eb4f638f05117f33.stex"
+path="res://.import/Object_Broken.png-be92cf093d08c42466186b2ed5ff858b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/texture/UI_Transformation.png"
-dest_files=[ "res://.import/UI_Transformation.png-59e412843213feb3eb4f638f05117f33.stex" ]
+source_file="res://asset/texture/Object_Broken.png"
+dest_files=[ "res://.import/Object_Broken.png-be92cf093d08c42466186b2ed5ff858b.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

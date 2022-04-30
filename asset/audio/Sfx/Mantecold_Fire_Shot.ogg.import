@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Mantecold_Fire_Shot.ogg-528fb7d998232318b1d2972c09ede235.oggstr"
+
+[deps]
+
+source_file="res://asset/audio/Sfx/Mantecold_Fire_Shot.ogg"
+dest_files=[ "res://.import/Mantecold_Fire_Shot.ogg-528fb7d998232318b1d2972c09ede235.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
