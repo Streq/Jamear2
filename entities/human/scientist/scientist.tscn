@@ -1,11 +1,9 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://entities/body.gd" type="Script" id=1]
 [ext_resource path="res://entities/human/guard/idle.gd" type="Script" id=2]
 [ext_resource path="res://state_machine/state_machine.tscn" type="PackedScene" id=3]
 [ext_resource path="res://entities/human/scientist/alert.gd" type="Script" id=4]
 [ext_resource path="res://entities/human/human.gd" type="Script" id=5]
-[ext_resource path="res://entities/transformable.gd" type="Script" id=6]
 [ext_resource path="res://entities/human/guard/look_around.gd" type="Script" id=7]
 [ext_resource path="res://entities/human/guard/look_for_patrol.gd" type="Script" id=8]
 [ext_resource path="res://entities/human/scientist/scientist_body.tscn" type="PackedScene" id=9]
@@ -14,8 +12,6 @@
 [ext_resource path="res://entities/human/scientist/sound_the_alarm.gd" type="Script" id=12]
 [ext_resource path="res://entities/human/scientist/yell.gd" type="Script" id=13]
 
-[sub_resource type="RectangleShape2D" id=1]
-
 [sub_resource type="CircleShape2D" id=2]
 radius = 125.0
 
@@ -23,14 +19,6 @@ radius = 125.0
 script = ExtResource( 5 )
 
 [node name="addons" type="Node" parent="."]
-
-[node name="transformable" type="Area2D" parent="addons"]
-collision_layer = 4
-collision_mask = 0
-script = ExtResource( 6 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="addons/transformable"]
-shape = SubResource( 1 )
 
 [node name="behavior" parent="addons" instance=ExtResource( 3 )]
 start_state = "patrol"
@@ -83,10 +71,8 @@ shape = SubResource( 2 )
 script = ExtResource( 8 )
 
 [node name="body" parent="." instance=ExtResource( 9 )]
-script = ExtResource( 1 )
 speed = 85.0
 
-[connection signal="area_entered" from="addons/transformable" to="addons/transformable" method="_on_area_entered"]
 [connection signal="timeout" from="addons/behavior/look_around/start_cooldown" to="addons/behavior/look_around" method="_on_start_cooldown_timeout"]
 [connection signal="timeout" from="addons/behavior/look_around/pause_duration" to="addons/behavior/look_around" method="_on_pause_duration_timeout"]
 [connection signal="timeout" from="addons/behavior/alert/reaction_time" to="addons/behavior/alert" method="_on_reaction_time_timeout"]

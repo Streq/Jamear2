@@ -163,6 +163,7 @@ zoom_out={
 2d_physics/layer_6="vent"
 2d_physics/layer_7="button"
 2d_physics/layer_8="noise"
+2d_physics/layer_9="player"
 
 [physics]
 

@@ -3,6 +3,8 @@ extends Node2D
 signal transformation_time_changed(current_value)
 signal max_transformation_time_changed(current_value)
 
+signal transformed()
+
 export var max_transformation_time = 5.0 setget set_max_transformation_time
 
 const is_player = true
@@ -29,10 +31,13 @@ func transform_into(new_body: KinematicBody2D):
 	
 	if is_instance_valid(old_body):
 		var transform = old_body.global_transform
+		var vision_transform = old_body.vista.transform
+		
 		remove_child(old_body)
 		add_child(new_body)
 #		body.set_as_toplevel(true)
 		new_body.global_transform = transform
+		new_body.vista.transform = vision_transform
 		old_body.queue_free()
 	else:
 		add_child(new_body)
@@ -42,6 +47,7 @@ func transform_into(new_body: KinematicBody2D):
 	body.connect("dead", self, "_on_dead")
 	var vision = body.get_node("vista")
 	vision.is_jugador = true
+	emit_signal("transformed")
 
 func _on_dead():
 	get_tree().reload_current_scene()
@@ -90,9 +96,11 @@ func _input(event):
 		detransform()
 	if event.is_action_pressed("skill"):
 		body.skill.trigger()
+	if event.is_action_pressed("attack"):
+		body.attack.trigger()
 
-func _on_consumable_entered(area):
-	target_bod = load(area.get_parent().filename)
+func _consume(body):
+	target_bod = load(body.filename)
 	transformation_time = max_transformation_time
 	transform_into_target()
 	

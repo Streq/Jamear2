@@ -10,8 +10,11 @@ func _enter(params):
 	target = params[0]
 	body = get_parent().get_parent()
 	body.expression_anim.play("curious_alert")
+	if body.memory.anxious:
+		timer.start(0.01)
+	else:
+		timer.start()
 	body.memory.anxious = true
-	timer.start()
 	pass
 
 func _exit():

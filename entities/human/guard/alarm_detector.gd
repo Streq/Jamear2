@@ -9,4 +9,4 @@ func _ready():
 	
 func _on_alarm(alarm):
 	if "responds_to_alarm" in mind_state.current:
-		mind_state.current.emit_signal("finish", "heard_alarm", [alarm.global_position])
+		mind_state.current.emit_signal("finish", "heard_alarm", [alarm])

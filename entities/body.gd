@@ -5,9 +5,11 @@ signal dead()
 onready var display = $display
 onready var vista = $vista
 onready var skill = $skill if has_node("skill") else Skill.new()
+onready var attack = $attack if has_node("attack") else Skill.new()
 onready var anim = $AnimationPlayer
 onready var expression_anim = $AnimationPlayerExpressions
 export var speed : float
+onready var state = $state_machine
 var velocity := Vector2()
 var dir := Vector2()
 var point_angle = 0

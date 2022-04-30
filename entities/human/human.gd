@@ -10,6 +10,7 @@ func _ready():
 	body.vista.is_jugador = is_player
 	body.global_rotation = 0
 	body.point_to(global_rotation)
+	body.add_to_group("npc")
 	
 
 func reparent_addons(to):

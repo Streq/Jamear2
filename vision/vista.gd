@@ -16,7 +16,8 @@ func can_see(target: PhysicsBody2D):
 			if can_see_through_walls:
 				return true;
 			var space_state = get_world_2d().direct_space_state
-			var result = space_state.intersect_ray(get_parent().global_position, target.global_position, [get_parent()])
+			var exceptions = get_tree().get_nodes_in_group("npc")
+			var result = space_state.intersect_ray(get_parent().global_position, target.global_position, exceptions)
 			return (result.has("collider") and result.collider == target)
 	return false
 
