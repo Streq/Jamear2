@@ -13,3 +13,7 @@ func trigger_target(target_pos):
 	if buttons.size():
 		var button = buttons[0].owner
 		button.activate_target(target_pos)
+
+
+func _physics_process(delta):
+	self.usable = button_area.get_overlapping_areas().size() > 0

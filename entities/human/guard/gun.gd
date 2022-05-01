@@ -1,4 +1,4 @@
-extends Node2D
+extends Skill
 
 export var BULLET : PackedScene
 onready var noise : Area2D = $noise_area
@@ -16,3 +16,6 @@ func shoot():
 	var listeners = noise.get_overlapping_areas()
 	for listener in listeners:
 		listener._on_noise(noise)
+
+func _physics_process(delta):
+	self.usable = true

@@ -3,6 +3,9 @@ extends Node2D
 signal transformation_time_changed(current_value)
 signal max_transformation_time_changed(current_value)
 
+signal can_attack(val)
+signal can_skill(val)
+
 signal transformed()
 
 export var max_transformation_time = 5.0 setget set_max_transformation_time
@@ -45,9 +48,17 @@ func transform_into(new_body: KinematicBody2D):
 		new_body.global_transform = global_transform
 	body = new_body
 	body.connect("dead", self, "_on_dead")
+	body.skill.connect("can_be_used", self, "_on_can_skill")
+	body.attack.connect("can_be_used", self, "_on_can_attack")
 	var vision = body.get_node("vista")
 	vision.is_jugador = true
 	emit_signal("transformed")
+
+func _on_can_skill(val):
+	emit_signal("can_skill", val)
+func _on_can_attack(val):
+	emit_signal("can_attack", val)
+
 
 func _on_dead():
 	get_tree().reload_current_scene()
@@ -98,7 +109,9 @@ func _input(event):
 		body.skill.trigger()
 	if event.is_action_pressed("attack"):
 		body.attack.trigger()
-
+	if event.is_action_pressed("reset"):
+		get_tree().reload_current_scene()
+	
 func _consume(body):
 	target_bod = load(body.filename)
 	transformation_time = max_transformation_time
