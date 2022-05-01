@@ -9,7 +9,7 @@
 [ext_resource path="res://terrain/floor_autotile.tscn" type="PackedScene" id=7]
 [ext_resource path="res://HUD/time_bar.gd" type="Script" id=8]
 
-[node name="Node2D2" type="YSort"]
+[node name="Node2D3" type="YSort"]
 
 [node name="floor_autotile" parent="." instance=ExtResource( 7 )]
 light_mask = 3
@@ -65,9 +65,6 @@ rotation = 3.14159
 
 [node name="guard3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 17, -12 )
-
-[connection signal="max_transformation_time_changed" from="player" to="HUD/ProgressBar" method="set_max"]
-[connection signal="transformation_time_changed" from="player" to="HUD/ProgressBar" method="set_value"]
 
 [editable path="player"]
 [editable path="navigation"]

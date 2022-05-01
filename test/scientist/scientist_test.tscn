@@ -75,8 +75,5 @@ position = Vector2( 80, 93 )
 [node name="guard3" parent="." instance=ExtResource( 9 )]
 position = Vector2( -160, 84 )
 
-[connection signal="max_transformation_time_changed" from="player" to="HUD/ProgressBar" method="set_max"]
-[connection signal="transformation_time_changed" from="player" to="HUD/ProgressBar" method="set_value"]
-
 [editable path="player"]
 [editable path="navigation"]

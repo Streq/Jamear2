@@ -3,9 +3,11 @@ var can_vent = false
 
 var vent = null
 onready var anim : AnimationPlayer = owner.get_node("AnimationPlayer")
+onready var sound : AudioStreamPlayer2D = owner.get_node("slide_through_sound")
 func _enter(params):
 	anim.play("vent")
 	anim.connect("animation_finished", self, "_vent_in")
+	sound.play()
 
 func _exit():
 	anim.disconnect("animation_finished", self, "_vent_in")

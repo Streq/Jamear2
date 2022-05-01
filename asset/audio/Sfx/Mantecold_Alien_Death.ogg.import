@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Mantecold_Alien_Death.ogg-b348f9bf91b96a46a6e278049f
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

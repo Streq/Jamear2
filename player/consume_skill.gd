@@ -10,5 +10,5 @@ func trigger():
 		if consumables.size():
 			var consumable = consumables[0]
 			if is_instance_valid(consumable) and is_instance_valid(consumable.owner):
-				owner.state.current.emit_signal("finish", "consume", [consumable.owner])
-		
+				if !consumable.owner.vista.can_see(owner):
+					owner.state.current.emit_signal("finish", "consume", [consumable.owner])

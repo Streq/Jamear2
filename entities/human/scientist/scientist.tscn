@@ -81,4 +81,3 @@ speed = 85.0
 [connection signal="timeout" from="addons/behavior/look_around/pause_duration" to="addons/behavior/look_around" method="_on_pause_duration_timeout"]
 [connection signal="timeout" from="addons/behavior/alert/reaction_time" to="addons/behavior/alert" method="_on_reaction_time_timeout"]
 [connection signal="patrol_found" from="look_for_patrol" to="addons/behavior/patrol" method="set_patrol"]
-[connection signal="dead" from="body" to="." method="_on_dead"]

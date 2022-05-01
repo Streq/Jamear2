@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://asset/audio/Music/Gameplay_LoopAMB.ogg" type="AudioStream" id=1]
+[ext_resource path="res://asset/audio/Music/Gameplay_LoopMusic_120bpm.ogg" type="AudioStream" id=2]
+[ext_resource path="res://global/music.gd" type="Script" id=3]
+[ext_resource path="res://asset/audio/Sfx/SFX_Alarma.ogg" type="AudioStream" id=4]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+autoplay = true
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+autoplay = true
+
+[node name="action_music" type="AudioStreamPlayer" parent="."]
+
+[node name="alert" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )

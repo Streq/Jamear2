@@ -11,5 +11,5 @@ dest_files=[ "res://.import/SFX_Alien_Eat.ogg-89a86a20d28e67ad1c2a121849a20224.o
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

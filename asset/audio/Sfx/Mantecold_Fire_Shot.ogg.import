@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Mantecold_Fire_Shot.ogg-528fb7d998232318b1d2972c09ed
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
