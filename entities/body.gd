@@ -18,6 +18,7 @@ var dir := Vector2()
 var point_angle = 0
 var memory
 var yell
+var alive = true
 
 func die():
 	if state.current.name != "die":
@@ -27,6 +28,7 @@ func die():
 		hurtbox.set_deferred("disabled", true)
 		expression_anim.play("calm")
 		vista.visible=false
+		alive = false
 #	queue_free()
 
 

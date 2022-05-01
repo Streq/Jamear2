@@ -17,7 +17,8 @@ func get_consumable():
 			if (
 				is_instance_valid(consumable) and 
 				is_instance_valid(consumable.owner) and 
-				!consumable.owner.vista.can_see(owner)
+				!consumable.owner.vista.can_see(owner) and
+				consumable.owner.alive
 			):
 				return consumable.owner 
 	return null
