@@ -25,7 +25,7 @@ func die():
 		state._change_state("die", null)
 		collider.set_deferred("disabled", true)
 		hurtbox.set_deferred("disabled", true)
-		
+		expression_anim.play("calm")
 		vista.visible=false
 #	queue_free()
 

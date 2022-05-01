@@ -12,3 +12,4 @@ func activate_target(target_position):
 		emit_signal("alarm", target_position)
 		$alert.play()
 		activated = true
+		
