@@ -91,7 +91,7 @@ window/size/height=224
 window/size/test_width=1280
 window/size/test_height=896
 window/stretch/mode="viewport"
-window/stretch/aspect="keep_height"
+window/stretch/aspect="keep"
 
 [global]
 
