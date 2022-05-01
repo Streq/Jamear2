@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://entities/human/guard/guard_body.tscn" type="PackedScene" id=1]
+[ext_resource path="res://entities/human/guard/dead.gd" type="Script" id=2]
 [ext_resource path="res://entities/human/human.gd" type="Script" id=3]
 [ext_resource path="res://entities/human/guard/shoot_on_sight.gd" type="Script" id=4]
 [ext_resource path="res://entities/human/guard/idle.gd" type="Script" id=5]
@@ -29,79 +30,82 @@ script = ExtResource( 3 )
 
 [node name="addons" type="Node" parent="."]
 
-[node name="guard_behavior" parent="addons" instance=ExtResource( 6 )]
+[node name="behavior" parent="addons" instance=ExtResource( 6 )]
 start_state = "patrol"
 
-[node name="shoot_on_sight" type="Node" parent="addons/guard_behavior"]
+[node name="shoot_on_sight" type="Node" parent="addons/behavior"]
 script = ExtResource( 4 )
 
-[node name="cooldown" type="Timer" parent="addons/guard_behavior/shoot_on_sight"]
+[node name="cooldown" type="Timer" parent="addons/behavior/shoot_on_sight"]
 process_mode = 0
 wait_time = 0.5
 one_shot = true
 
-[node name="idle" type="Node" parent="addons/guard_behavior"]
+[node name="idle" type="Node" parent="addons/behavior"]
 script = ExtResource( 5 )
 
-[node name="chase" type="Node" parent="addons/guard_behavior"]
+[node name="chase" type="Node" parent="addons/behavior"]
 script = ExtResource( 7 )
 
-[node name="look_around" type="Node" parent="addons/guard_behavior"]
+[node name="look_around" type="Node" parent="addons/behavior"]
 script = ExtResource( 11 )
 
-[node name="start_cooldown" type="Timer" parent="addons/guard_behavior/look_around"]
+[node name="start_cooldown" type="Timer" parent="addons/behavior/look_around"]
 wait_time = 0.6
 one_shot = true
 
-[node name="Tween" type="Tween" parent="addons/guard_behavior/look_around"]
+[node name="Tween" type="Tween" parent="addons/behavior/look_around"]
 playback_process_mode = 0
 
-[node name="pause_duration" type="Timer" parent="addons/guard_behavior/look_around"]
+[node name="pause_duration" type="Timer" parent="addons/behavior/look_around"]
 wait_time = 0.5
 one_shot = true
 
-[node name="patrol" type="Node" parent="addons/guard_behavior"]
+[node name="patrol" type="Node" parent="addons/behavior"]
 script = ExtResource( 8 )
 
-[node name="alert" type="Node" parent="addons/guard_behavior"]
+[node name="alert" type="Node" parent="addons/behavior"]
 script = ExtResource( 9 )
 
-[node name="reaction_time" type="Timer" parent="addons/guard_behavior/alert"]
+[node name="reaction_time" type="Timer" parent="addons/behavior/alert"]
 wait_time = 0.5
 one_shot = true
 
-[node name="goto_angry" type="Node" parent="addons/guard_behavior"]
+[node name="goto_angry" type="Node" parent="addons/behavior"]
 script = ExtResource( 15 )
 
-[node name="goto_curious" type="Node" parent="addons/guard_behavior"]
+[node name="goto_curious" type="Node" parent="addons/behavior"]
 script = ExtResource( 17 )
 
-[node name="heard_alarm" type="Node" parent="addons/guard_behavior"]
+[node name="heard_alarm" type="Node" parent="addons/behavior"]
 script = ExtResource( 20 )
 
-[node name="reaction_time" type="Timer" parent="addons/guard_behavior/heard_alarm"]
+[node name="reaction_time" type="Timer" parent="addons/behavior/heard_alarm"]
 wait_time = 0.5
 one_shot = true
 
-[node name="heard_noise" type="Node" parent="addons/guard_behavior"]
+[node name="heard_noise" type="Node" parent="addons/behavior"]
 script = ExtResource( 18 )
 
-[node name="reaction_time" type="Timer" parent="addons/guard_behavior/heard_noise"]
+[node name="reaction_time" type="Timer" parent="addons/behavior/heard_noise"]
 wait_time = 0.5
 one_shot = true
+
+[node name="dead" type="Node" parent="addons/behavior"]
+script = ExtResource( 2 )
 
 [node name="memory" type="Node" parent="addons"]
 script = ExtResource( 10 )
 
 [node name="alarm_detector" type="Node" parent="addons" groups=["alarm_detector"]]
 script = ExtResource( 14 )
-mind_state = NodePath("../guard_behavior")
+mind_state = NodePath("../behavior")
 
 [node name="hearing" type="Area2D" parent="addons"]
 collision_layer = 0
 collision_mask = 128
 script = ExtResource( 16 )
-mind_state = NodePath("../guard_behavior")
+mind_state = NodePath("../behavior")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="addons/hearing"]
 shape = SubResource( 2 )
@@ -123,10 +127,10 @@ z_as_relative = false
 [node name="look_for_patrol" type="Node" parent="."]
 script = ExtResource( 12 )
 
-[connection signal="timeout" from="addons/guard_behavior/look_around/start_cooldown" to="addons/guard_behavior/look_around" method="_on_start_cooldown_timeout"]
-[connection signal="timeout" from="addons/guard_behavior/look_around/pause_duration" to="addons/guard_behavior/look_around" method="_on_pause_duration_timeout"]
-[connection signal="timeout" from="addons/guard_behavior/alert/reaction_time" to="addons/guard_behavior/alert" method="_on_reaction_time_timeout"]
-[connection signal="timeout" from="addons/guard_behavior/heard_alarm/reaction_time" to="addons/guard_behavior/heard_alarm" method="_on_reaction_time_timeout"]
-[connection signal="timeout" from="addons/guard_behavior/heard_noise/reaction_time" to="addons/guard_behavior/heard_noise" method="_on_reaction_time_timeout"]
+[connection signal="timeout" from="addons/behavior/look_around/start_cooldown" to="addons/behavior/look_around" method="_on_start_cooldown_timeout"]
+[connection signal="timeout" from="addons/behavior/look_around/pause_duration" to="addons/behavior/look_around" method="_on_pause_duration_timeout"]
+[connection signal="timeout" from="addons/behavior/alert/reaction_time" to="addons/behavior/alert" method="_on_reaction_time_timeout"]
+[connection signal="timeout" from="addons/behavior/heard_alarm/reaction_time" to="addons/behavior/heard_alarm" method="_on_reaction_time_timeout"]
+[connection signal="timeout" from="addons/behavior/heard_noise/reaction_time" to="addons/behavior/heard_noise" method="_on_reaction_time_timeout"]
 [connection signal="dead" from="body" to="." method="_on_dead"]
-[connection signal="patrol_found" from="look_for_patrol" to="addons/guard_behavior/patrol" method="set_patrol"]
+[connection signal="patrol_found" from="look_for_patrol" to="addons/behavior/patrol" method="set_patrol"]

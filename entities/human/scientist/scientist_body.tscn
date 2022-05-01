@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://entities/human/human_body.tscn" type="PackedScene" id=1]
-[ext_resource path="res://asset/texture/Cientifico.png" type="Texture" id=3]
+[ext_resource path="res://entities/human/scientist/flee.gd" type="Script" id=2]
 [ext_resource path="res://entities/human/scientist/skill.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -19,6 +19,5 @@ collision_mask = 64
 [node name="CollisionShape2D" type="CollisionShape2D" parent="skill/button_area" index="0"]
 shape = SubResource( 1 )
 
-[node name="Sprite" parent="display" index="0"]
-position = Vector2( 0, -7 )
-texture = ExtResource( 3 )
+[node name="flee" type="Node" parent="state_machine" index="2"]
+script = ExtResource( 2 )

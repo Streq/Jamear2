@@ -9,6 +9,7 @@ var target := Vector2()
 var body : KinematicBody2D
 func _enter(params):
 	body = get_parent().get_parent()
+	body.state.current.emit_signal("finish", "flee", null)
 	alarm = get_closest_alarm()
 	target = alarm.global_position
 	pass

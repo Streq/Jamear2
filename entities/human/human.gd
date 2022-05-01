@@ -2,6 +2,7 @@ extends Node2D
 
 onready var body = $body
 onready var addons = $addons.get_children()
+onready var behavior = $addons/behavior
 export var is_player := false
 
 
@@ -21,4 +22,4 @@ func reparent_addons(to):
 
 
 func _on_dead():
-	queue_free()
+	behavior._change_state("dead", null)

@@ -1,6 +1,6 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=25 format=2]
 
-[ext_resource path="res://asset/texture/wall.png" type="Texture" id=1]
+[ext_resource path="res://asset/texture/Cientifico-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://vision/vista.tscn" type="PackedScene" id=2]
 [ext_resource path="res://entities/body.gd" type="Script" id=3]
 [ext_resource path="res://state_machine/state_machine.tscn" type="PackedScene" id=4]
@@ -8,6 +8,12 @@
 [ext_resource path="res://asset/texture/expression.png" type="Texture" id=6]
 [ext_resource path="res://entities/transformable.gd" type="Script" id=7]
 [ext_resource path="res://entities/human/consumed.gd" type="Script" id=8]
+[ext_resource path="res://entities/humanwalk.tres" type="Animation" id=9]
+[ext_resource path="res://entities/humanidle.tres" type="Animation" id=10]
+[ext_resource path="res://entities/humanflee.tres" type="Animation" id=11]
+[ext_resource path="res://entities/humanaction.tres" type="Animation" id=12]
+[ext_resource path="res://entities/human_anim.tres" type="Animation" id=13]
+[ext_resource path="res://entities/human/die.gd" type="Script" id=14]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 3.0
@@ -18,17 +24,22 @@ extents = Vector2( 8, 8 )
 [sub_resource type="Animation" id=8]
 resource_name = "consumed"
 
-[sub_resource type="Animation" id=9]
-resource_name = "idle"
-
-[sub_resource type="Animation" id=10]
-resource_name = "press"
-
-[sub_resource type="Animation" id=11]
-resource_name = "run"
-
-[sub_resource type="Animation" id=12]
-resource_name = "walk"
+[sub_resource type="Animation" id=14]
+resource_name = "die"
+length = 0.4
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/path = NodePath("display/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65 ]
+}
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -177,13 +188,19 @@ shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="display"]
 texture = ExtResource( 1 )
+hframes = 18
+vframes = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+playback_speed = 0.5
+anims/RESET = ExtResource( 13 )
+anims/action = ExtResource( 12 )
 anims/consumed = SubResource( 8 )
-anims/idle = SubResource( 9 )
-anims/press = SubResource( 10 )
-anims/run = SubResource( 11 )
-anims/walk = SubResource( 12 )
+anims/die = SubResource( 14 )
+anims/flee = ExtResource( 11 )
+anims/idle = ExtResource( 10 )
+anims/walk = ExtResource( 9 )
 
 [node name="state_machine" parent="." instance=ExtResource( 4 )]
 start_state = "idle"
@@ -193,6 +210,9 @@ script = ExtResource( 5 )
 
 [node name="consumed" type="Node" parent="state_machine"]
 script = ExtResource( 8 )
+
+[node name="die" type="Node" parent="state_machine"]
+script = ExtResource( 14 )
 
 [node name="AnimationPlayerExpressions" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 3 )

@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
+[ext_resource path="res://entities/human/scientist/dead.gd" type="Script" id=1]
 [ext_resource path="res://entities/human/guard/idle.gd" type="Script" id=2]
 [ext_resource path="res://state_machine/state_machine.tscn" type="PackedScene" id=3]
 [ext_resource path="res://entities/human/scientist/alert.gd" type="Script" id=4]
@@ -52,6 +53,9 @@ script = ExtResource( 4 )
 [node name="reaction_time" type="Timer" parent="addons/behavior/alert"]
 wait_time = 0.5
 one_shot = true
+
+[node name="dead" type="Node" parent="addons/behavior"]
+script = ExtResource( 1 )
 
 [node name="memory" type="Node" parent="addons"]
 script = ExtResource( 11 )

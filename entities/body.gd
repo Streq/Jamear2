@@ -8,6 +8,9 @@ onready var skill = $skill if has_node("skill") else Skill.new()
 onready var attack = $attack if has_node("attack") else Skill.new()
 onready var anim = $AnimationPlayer
 onready var expression_anim = $AnimationPlayerExpressions
+onready var collider = $CollisionShape2D
+onready var hurtbox = $hurtbox/CollisionShape2D
+
 export var speed : float
 onready var state = $state_machine
 var velocity := Vector2()
@@ -17,7 +20,13 @@ var memory
 var yell
 
 func die():
-	emit_signal("dead")
+	if state.current.name != "die":
+		emit_signal("dead")
+		state._change_state("die", null)
+		collider.set_deferred("disabled", true)
+		hurtbox.set_deferred("disabled", true)
+		
+		vista.visible=false
 #	queue_free()
 
 
