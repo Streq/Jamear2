@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://terrain/wall_autotile.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://entities/human/scientist/scientist.tscn" type="PackedScene" id=7]
 [ext_resource path="res://terrain/vent_connection.tscn" type="PackedScene" id=8]
 [ext_resource path="res://terrain/wall_text_tilemap.tscn" type="PackedScene" id=9]
+[ext_resource path="res://terrain/wall_vent_connection.tscn" type="PackedScene" id=10]
 
 [node name="Node2D2" type="YSort"]
 
@@ -39,7 +40,7 @@ color = Color( 0.0313726, 0.0117647, 0.027451, 1 )
 [node name="player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 33, -43 )
 
-[node name="Camera2D" parent="player/addons" index="3"]
+[node name="Camera2D" parent="player/addons" index="2"]
 zoom_level = 3
 min_zoom_level = 3
 
@@ -60,5 +61,14 @@ position = Vector2( 48, 32 )
 [node name="ventB" parent="vent_connection" index="1"]
 position = Vector2( 136, -8 )
 
+[node name="wall_vent_connection" parent="." instance=ExtResource( 10 )]
+
+[node name="ventA" parent="wall_vent_connection" index="0"]
+position = Vector2( 375, 40 )
+
+[node name="ventB" parent="wall_vent_connection" index="1"]
+position = Vector2( 279, 39 )
+
 [editable path="player"]
 [editable path="vent_connection"]
+[editable path="wall_vent_connection"]
