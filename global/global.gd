@@ -11,5 +11,9 @@ func get_one_of(group:String):
 		return get_tree().get_nodes_in_group(group)[0]
 	return null
 
+func get_all_of(group:String):
+	return get_tree().get_nodes_in_group(group)
+	
+
 func get_player():
 	return get_one_of("player")

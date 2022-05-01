@@ -6,6 +6,7 @@ signal vent(vent)
 onready var vent_area = $vent_area
 #onready var button_area = $button_area
 
+
 func _physics_process(delta):
 	self.usable = can_use()
 

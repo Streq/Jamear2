@@ -50,6 +50,9 @@ func transform_into(new_body: KinematicBody2D):
 	body.connect("dead", self, "_on_dead")
 	body.skill.connect("can_be_used", self, "_on_can_skill")
 	body.attack.connect("can_be_used", self, "_on_can_attack")
+	
+	_on_can_skill(body.skill.usable)
+	_on_can_attack(body.skill.usable)
 	var vision = body.get_node("vista")
 	vision.is_jugador = true
 	emit_signal("transformed")
@@ -103,8 +106,11 @@ func set_max_transformation_time(val):
 	emit_signal("max_transformation_time_changed", val)
 	
 func _input(event):
-	if event.is_action_pressed("detransform") and transformed:
-		detransform()
+	if event.is_action_pressed("detransform"):
+		if transformed:
+			detransform()
+		else:
+			attempt_transform()
 	if event.is_action_pressed("skill"):
 		body.skill.trigger()
 	if event.is_action_pressed("attack"):
