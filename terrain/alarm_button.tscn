@@ -24,7 +24,8 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )
 
-[node name="alert" type="AudioStreamPlayer" parent="."]
+[node name="alert" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
 
 [connection signal="alarm" from="." to="sprite" method="_on_alarm_button_alarm"]
+[connection signal="deactivated" from="." to="sprite" method="_on_alarm_button_deactivated"]

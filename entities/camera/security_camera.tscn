@@ -17,7 +17,7 @@ speed_degrees = 35
 [node name="alarm" type="Node2D" parent="." groups=["alarm"]]
 script = ExtResource( 2 )
 
-[node name="alert" type="AudioStreamPlayer" parent="alarm"]
+[node name="alert" type="AudioStreamPlayer2D" parent="alarm"]
 stream = ExtResource( 9 )
 
 [node name="state_machine" parent="." instance=ExtResource( 5 )]

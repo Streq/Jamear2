@@ -11,7 +11,8 @@ func _enter(params):
 	body = get_parent().get_parent()
 	body.state.current.emit_signal("finish", "flee", null)
 	alarm = get_closest_alarm()
-	target = alarm.global_position
+	if alarm:
+		target = alarm.global_position
 	pass
 
 func _physics_update(delta):

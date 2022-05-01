@@ -18,3 +18,7 @@ func _ready():
 
 func _on_alarm_button_alarm(where):
 	frame_coords.y = 1
+
+
+func _on_alarm_button_deactivated():
+	frame_coords.y = 0
