@@ -2,13 +2,17 @@ extends State
 
 var target_position = null
 var body = null
+
+onready var sound = $alert_sound
+
 func enter(params):
 	body = get_parent().get_parent()
 	$reaction_time.start()
 	body.expression_anim.play("alert")
+	if !body.memory.anxious: 
+		sound.play()
 	body.memory.anxious = true
-
-
+	
 
 func exit():
 	$reaction_time.stop()

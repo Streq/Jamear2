@@ -1,10 +1,10 @@
 extends State
 var body = null
-
+onready var sound = $alert_sound
 func enter(params):
 	body = get_parent().get_parent()
 	$reaction_time.start()
-	
+	sound.play()
 func exit():
 	$reaction_time.stop()
 

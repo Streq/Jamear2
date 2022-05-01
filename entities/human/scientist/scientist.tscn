@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://entities/human/scientist/dead.gd" type="Script" id=1]
 [ext_resource path="res://entities/human/guard/idle.gd" type="Script" id=2]
 [ext_resource path="res://state_machine/state_machine.tscn" type="PackedScene" id=3]
 [ext_resource path="res://entities/human/scientist/alert.gd" type="Script" id=4]
 [ext_resource path="res://entities/human/human.gd" type="Script" id=5]
+[ext_resource path="res://asset/audio/Sfx/SFX_Stinger_HIT_.ogg" type="AudioStream" id=6]
 [ext_resource path="res://entities/human/guard/look_around.gd" type="Script" id=7]
 [ext_resource path="res://entities/human/guard/look_for_patrol.gd" type="Script" id=8]
 [ext_resource path="res://entities/human/scientist/scientist_body.tscn" type="PackedScene" id=9]
@@ -53,6 +54,9 @@ script = ExtResource( 4 )
 [node name="reaction_time" type="Timer" parent="addons/behavior/alert"]
 wait_time = 0.5
 one_shot = true
+
+[node name="alert_sound" type="AudioStreamPlayer" parent="addons/behavior/alert"]
+stream = ExtResource( 6 )
 
 [node name="dead" type="Node" parent="addons/behavior"]
 script = ExtResource( 1 )

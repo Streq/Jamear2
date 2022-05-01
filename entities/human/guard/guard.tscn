@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://entities/human/guard/guard_body.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/human/guard/dead.gd" type="Script" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://entities/human/guard/heard_noise.gd" type="Script" id=18]
 [ext_resource path="res://entities/human/scientist/yell.gd" type="Script" id=19]
 [ext_resource path="res://entities/human/guard/heard_alarm.gd" type="Script" id=20]
+[ext_resource path="res://asset/audio/Sfx/SFX_Stinger_HIT_.ogg" type="AudioStream" id=21]
 
 [sub_resource type="CircleShape2D" id=2]
 
@@ -71,6 +72,9 @@ script = ExtResource( 9 )
 [node name="reaction_time" type="Timer" parent="addons/behavior/alert"]
 wait_time = 0.5
 one_shot = true
+
+[node name="alert_sound" type="AudioStreamPlayer" parent="addons/behavior/alert"]
+stream = ExtResource( 21 )
 
 [node name="goto_angry" type="Node" parent="addons/behavior"]
 script = ExtResource( 15 )

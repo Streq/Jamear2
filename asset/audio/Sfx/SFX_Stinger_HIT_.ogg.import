@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SFX_Stinger_HIT_.ogg-e3b6c7ca7deee2a4770443ed5edac9d3.oggstr"
+
+[deps]
+
+source_file="res://asset/audio/Sfx/SFX_Stinger_HIT_.ogg"
+dest_files=[ "res://.import/SFX_Stinger_HIT_.ogg-e3b6c7ca7deee2a4770443ed5edac9d3.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

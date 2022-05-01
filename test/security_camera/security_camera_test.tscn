@@ -46,12 +46,17 @@ position = Vector2( 128, 100 )
 
 [node name="guard4" parent="." index="10" instance=ExtResource( 3 )]
 position = Vector2( -44, -5 )
+rotation = 2.87979
 
-[node name="guard2" parent="." index="11" instance=ExtResource( 3 )]
+[node name="guard5" parent="." index="11" instance=ExtResource( 3 )]
+position = Vector2( -43, -36 )
+rotation = 2.87979
+
+[node name="guard2" parent="." index="12" instance=ExtResource( 3 )]
 position = Vector2( 157, -81 )
 rotation = -1.57079
 
-[node name="navigation" parent="." index="12" instance=ExtResource( 4 )]
+[node name="navigation" parent="." index="13" instance=ExtResource( 4 )]
 visible = false
 
 [node name="navigation_tilemap" parent="navigation" index="0"]
