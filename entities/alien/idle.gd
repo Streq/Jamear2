@@ -1,6 +1,7 @@
 extends State
 var can_vent = true
 var active = false
+onready var walk_sound = owner.get_node("walk_sound")
 onready var anim = owner.get_node("AnimationPlayer")
 
 func _enter(args):
@@ -20,8 +21,11 @@ func _physics_update(delta):
 	
 	if owner.velocity != Vector2():
 		anim.play("walk")
+		if !walk_sound.playing:
+			walk_sound.play()
 	else:
 		anim.play("idle")
+		walk_sound.stop()
 
 func _on_vent(vent):
 	if active:
