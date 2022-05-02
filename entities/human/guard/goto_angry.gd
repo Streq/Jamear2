@@ -5,7 +5,7 @@ var new_path: Array = []
 var levelNavigation: Navigation2D = null
 var target := Vector2()
 var body : KinematicBody2D
-
+var responds_to_alarm = true
 func _enter(params):
 	target = params[0]
 	body = get_parent().get_parent()
