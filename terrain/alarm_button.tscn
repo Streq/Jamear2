@@ -7,7 +7,7 @@
 [ext_resource path="res://asset/audio/Sfx/SFX_Stinger_HIT_.ogg" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 8 )
+extents = Vector2( 9, 9 )
 
 [node name="alarm_button" type="Node2D" groups=["alarm"]]
 script = ExtResource( 2 )
@@ -31,6 +31,9 @@ attenuation = 0.0192366
 
 [node name="stinger" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+
+[node name="Position2D" type="Position2D" parent="." groups=["alarm_position"]]
+position = Vector2( 0, 9 )
 
 [connection signal="alarm" from="." to="sprite" method="_on_alarm_button_alarm"]
 [connection signal="deactivated" from="." to="sprite" method="_on_alarm_button_deactivated"]

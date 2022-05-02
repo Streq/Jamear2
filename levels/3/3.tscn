@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://entities/goal_zone/goal_zone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://terrain/floor_autotile.tscn" type="PackedScene" id=2]
@@ -13,10 +13,22 @@
 [ext_resource path="res://entities/camera/security_camera.tscn" type="PackedScene" id=11]
 [ext_resource path="res://terrain/bump.tscn" type="PackedScene" id=12]
 [ext_resource path="res://entities/camera/machinegun.tscn" type="PackedScene" id=13]
+[ext_resource path="res://terrain/wall_vent_connection.tscn" type="PackedScene" id=14]
+[ext_resource path="res://terrain/furniture_tilemap.tscn" type="PackedScene" id=15]
 
 [node name="Node2D2" type="YSort"]
 script = ExtResource( 8 )
 song = "level2"
+
+[node name="HUD" parent="." instance=ExtResource( 7 )]
+
+[node name="wall_vent_connection" parent="." instance=ExtResource( 14 )]
+
+[node name="ventA" parent="wall_vent_connection" index="0"]
+position = Vector2( 56, -72 )
+
+[node name="ventB" parent="wall_vent_connection" index="1"]
+position = Vector2( 120, -72 )
 
 [node name="security_camera" parent="." instance=ExtResource( 11 )]
 position = Vector2( 272, -24 )
@@ -58,8 +70,6 @@ position = Vector2( 8, 40 )
 
 [node name="goal_zone" parent="." instance=ExtResource( 1 )]
 position = Vector2( 296, 40 )
-
-[node name="HUD" parent="." instance=ExtResource( 7 )]
 
 [node name="guard" parent="." instance=ExtResource( 5 )]
 position = Vector2( -48, -152 )
@@ -105,6 +115,10 @@ tile_data = PoolIntArray( -589828, 0, 0, -589827, 0, 0, -589826, 0, 0, -589825, 
 [node name="bump" parent="." instance=ExtResource( 12 )]
 position = Vector2( 8, 80 )
 
+[node name="furniture_tilemap" parent="." instance=ExtResource( 15 )]
+tile_data = PoolIntArray( -327676, 2, 0, -327672, 2, 0, -327666, 2, 0, -327664, 3, 0, -196593, 0, 0 )
+
+[editable path="wall_vent_connection"]
 [editable path="guard/patrol"]
 [editable path="guard2/patrol"]
 [editable path="navigation"]

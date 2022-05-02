@@ -28,7 +28,7 @@ func _ready():
 	if tree.has_group("navigation"):
 		levelNavigation = tree.get_nodes_in_group("navigation")[0]
 	
-	for alarm in get_tree().get_nodes_in_group("alarm"):
+	for alarm in get_tree().get_nodes_in_group("alarm_position"):
 		alarms.push_back(alarm)
 	
 
@@ -53,7 +53,7 @@ func get_closest_alarm():
 		var current_dist := INF
 		for alarm in alarms:
 			if alarm != closest_alarm:
-				var path = levelNavigation.get_simple_path(body.global_position, alarm)
+				var path = levelNavigation.get_simple_path(body.global_position, alarm.global_position)
 				var dist := 0.0
 				var pos = body.global_position
 				for vec in path:

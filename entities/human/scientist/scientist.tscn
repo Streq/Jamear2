@@ -113,7 +113,6 @@ shape = SubResource( 3 )
 script = ExtResource( 8 )
 
 [node name="body" parent="." instance=ExtResource( 9 )]
-speed = 85.0
 
 [connection signal="timeout" from="addons/behavior/look_around/start_cooldown" to="addons/behavior/look_around" method="_on_start_cooldown_timeout"]
 [connection signal="timeout" from="addons/behavior/look_around/pause_duration" to="addons/behavior/look_around" method="_on_pause_duration_timeout"]

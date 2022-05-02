@@ -9,6 +9,7 @@ extents = Vector2( 4, 4 )
 
 [node name="scientist_body" instance=ExtResource( 1 )]
 sprite_name = "scientist"
+speed = 60.0
 
 [node name="skill" type="Node2D" parent="." index="3"]
 script = ExtResource( 4 )
