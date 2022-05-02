@@ -1,0 +1,99 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://state_machine/state_machine.tscn" type="PackedScene" id=1]
+[ext_resource path="res://vision/vista.tscn" type="PackedScene" id=2]
+[ext_resource path="res://asset/audio/Sfx/SFX_Stinger_HIT_.ogg" type="AudioStream" id=3]
+[ext_resource path="res://asset/texture/camera.png" type="Texture" id=4]
+[ext_resource path="res://asset/audio/Sfx/SFX_Alarma.ogg" type="AudioStream" id=5]
+[ext_resource path="res://entities/camera/pause.gd" type="Script" id=6]
+[ext_resource path="res://terrain/alarm_button.gd" type="Script" id=7]
+[ext_resource path="res://entities/camera/detected.gd" type="Script" id=8]
+[ext_resource path="res://entities/camera/looking_around.gd" type="Script" id=9]
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Node2D
+
+signal player_detected()
+
+export var speed_degrees = 90
+export var pause_time = 0.5
+onready var pivot = $pivot
+onready var vista = $pivot/vista
+onready var alarm = $alarm
+var is_player = false
+
+func _physics_process(delta):
+	var tree = get_tree()
+	if tree.has_group(\"player\"):
+		var body = tree.get_nodes_in_group(\"player\")[0].body
+		if suspects(body):
+			emit_signal(\"player_detected\")
+			alarm.activate_target(body.global_position)
+			
+func suspects(body):
+	return vista.can_see(body) and body.is_in_group(\"alien\")
+"
+
+[sub_resource type="ViewportTexture" id=1]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="ViewportTexture" id=2]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="ViewportTexture" id=3]
+viewport_path = NodePath("Viewport")
+
+[node name="bio_camera" type="Node2D" groups=["player_detector"]]
+script = SubResource( 4 )
+
+[node name="alarm" type="Node2D" parent="." groups=["alarm"]]
+script = ExtResource( 7 )
+
+[node name="alert" type="AudioStreamPlayer2D" parent="alarm"]
+stream = ExtResource( 5 )
+
+[node name="stinger" type="AudioStreamPlayer" parent="alarm"]
+stream = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="alarm"]
+one_shot = true
+
+[node name="state_machine" parent="." instance=ExtResource( 1 )]
+start_state = "looking_around"
+
+[node name="looking_around" type="Node" parent="state_machine"]
+script = ExtResource( 9 )
+
+[node name="detected" type="Node" parent="state_machine"]
+script = ExtResource( 8 )
+
+[node name="pause" type="Node" parent="state_machine"]
+script = ExtResource( 6 )
+
+[node name="Timer" type="Timer" parent="state_machine/pause"]
+process_mode = 0
+one_shot = true
+
+[node name="pivot" type="Node2D" parent="."]
+
+[node name="vista" parent="pivot" instance=ExtResource( 2 )]
+position = Vector2( 1, 0 )
+radius = 180.0
+angle_degs = 45.0
+
+[node name="Light2D" parent="pivot/vista/vista_jugador" index="0"]
+texture = SubResource( 1 )
+
+[node name="Light2D" parent="pivot/vista/vista_npc" index="0"]
+texture = SubResource( 2 )
+color = Color( 0, 1, 0.0156863, 1 )
+
+[node name="TextureRect" parent="pivot/vista" index="4"]
+texture = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="pivot"]
+position = Vector2( 4, 0 )
+rotation = -1.57079
+texture = ExtResource( 4 )
+
+[editable path="pivot/vista"]

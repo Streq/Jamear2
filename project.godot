@@ -50,6 +50,11 @@ _global_script_classes=[ {
 "path": "res://global/render_utils.gd"
 }, {
 "base": "Node2D",
+"class": "SecurityCamera",
+"language": "GDScript",
+"path": "res://entities/camera/security_camera.gd"
+}, {
+"base": "Node2D",
 "class": "Skill",
 "language": "GDScript",
 "path": "res://entities/human/skill.gd"
@@ -73,6 +78,7 @@ _global_script_class_icons={
 "PatrolPath": "",
 "PoolArray": "",
 "RenderUtils": "",
+"SecurityCamera": "",
 "Skill": "",
 "State": "",
 "StateMachine": ""
@@ -89,6 +95,7 @@ config/icon="res://icon.png"
 Global="*res://global/global.gd"
 Levels="*res://global/levels/levels.tscn"
 Music="*res://global/music.tscn"
+Pause="*res://global/pause.tscn"
 
 [display]
 
@@ -162,6 +169,11 @@ zoom_out={
 reset={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+pause={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":80,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 
