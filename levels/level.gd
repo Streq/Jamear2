@@ -1,4 +1,4 @@
-extends YSort
+extends Node2D
 
 export var song : String = ""
 export var ambience : String = ""

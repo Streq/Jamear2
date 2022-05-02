@@ -11,5 +11,5 @@ dest_files=[ "res://.import/SFX_Stinger_Win_.ogg-1a966dc9b23cb936472e079ad848485
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
