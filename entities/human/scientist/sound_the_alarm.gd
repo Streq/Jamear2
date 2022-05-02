@@ -16,7 +16,7 @@ func _enter(params):
 	pass
 
 func _physics_update(delta):
-	if (target - body.global_position).length_squared() > 200.0:
+	if (target - body.global_position).length_squared() > 1024.0:
 		generate_path()
 		navigate()
 	else:

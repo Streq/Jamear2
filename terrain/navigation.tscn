@@ -29,4 +29,5 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 script = ExtResource( 3 )
 
 [node name="navigation_tilemap" parent="." instance=ExtResource( 2 )]
+z_index = 100
 tile_set = SubResource( 2 )

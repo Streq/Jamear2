@@ -24,6 +24,9 @@ stream = ExtResource( 9 )
 [node name="stinger" type="AudioStreamPlayer" parent="alarm"]
 stream = ExtResource( 10 )
 
+[node name="Timer" type="Timer" parent="alarm"]
+one_shot = true
+
 [node name="state_machine" parent="." instance=ExtResource( 5 )]
 start_state = "looking_around"
 

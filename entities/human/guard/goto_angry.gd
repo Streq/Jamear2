@@ -17,7 +17,7 @@ func _physics_update(delta):
 	var body = get_parent().get_parent()
 	if body.memory.suspects(target_body) and body.get_node("vista").can_see(target_body):
 		emit_signal("finish", "shoot_on_sight", null)
-	elif (target - body.global_position).length_squared() > 200.0:
+	elif (target - body.global_position).length_squared() > 1024.0:
 		generate_path()
 		navigate()
 	else:

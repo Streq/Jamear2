@@ -21,7 +21,7 @@ func _physics_update(delta):
 	if memory.suspects(target_body) and body.get_node("vista").can_see(target_body):
 		emit_signal("finish", "alert", null)
 		memory.remember(target_body)
-	elif (target - body.global_position).length_squared() > 200.0:
+	elif (target - body.global_position).length_squared() > 1024.0:
 		generate_path()
 		navigate()
 	else:
