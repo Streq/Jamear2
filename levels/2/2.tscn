@@ -14,8 +14,9 @@
 [ext_resource path="res://entities/camera/security_camera.tscn" type="PackedScene" id=12]
 [ext_resource path="res://terrain/navigation.tscn" type="PackedScene" id=13]
 
-[node name="Node2D" type="YSort"]
+[node name="Node2D2" type="YSort"]
 script = ExtResource( 7 )
+ambience = "ambience"
 
 [node name="HUD" parent="." instance=ExtResource( 5 )]
 

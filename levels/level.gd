@@ -5,7 +5,5 @@ export var ambience : String = ""
 
 
 func _ready():
-	if song:
-		Music.play_music(song)
-	if ambience:
-		Music.play_ambience(ambience)
+	Music.play_music(song)
+	Music.play_ambience(ambience)

@@ -12,8 +12,9 @@
 [ext_resource path="res://entities/patrol.tscn" type="PackedScene" id=10]
 [ext_resource path="res://entities/camera/security_camera.tscn" type="PackedScene" id=11]
 
-[node name="Node2D" type="YSort"]
+[node name="Node2D2" type="YSort"]
 script = ExtResource( 8 )
+song = "level2"
 
 [node name="security_camera" parent="." instance=ExtResource( 11 )]
 position = Vector2( -48, 0 )

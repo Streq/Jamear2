@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://asset/texture/wall_stuff.png" type="Texture" id=1]
 [ext_resource path="res://terrain/alarm_button.gd" type="Script" id=2]
 [ext_resource path="res://asset/audio/Sfx/SFX_Alarma.ogg" type="AudioStream" id=3]
 [ext_resource path="res://terrain/alarm_sprite.gd" type="Script" id=4]
+[ext_resource path="res://asset/audio/Sfx/SFX_Stinger_HIT_.ogg" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -27,6 +28,9 @@ shape = SubResource( 1 )
 [node name="alert" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
 attenuation = 0.0192366
+
+[node name="stinger" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
 
 [connection signal="alarm" from="." to="sprite" method="_on_alarm_button_alarm"]
 [connection signal="deactivated" from="." to="sprite" method="_on_alarm_button_deactivated"]
