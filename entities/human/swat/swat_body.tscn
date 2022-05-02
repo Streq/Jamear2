@@ -15,7 +15,7 @@ resource_name = "aim"
 
 [node name="guard_body" instance=ExtResource( 1 )]
 sprite_name = "swat"
-speed = 90.0
+speed = 100.0
 
 [node name="skill" type="Node2D" parent="." index="3"]
 script = ExtResource( 2 )

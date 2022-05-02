@@ -32,7 +32,7 @@
 1/shapes = [  ]
 1/z_index = 0
 
-[node name="TileMap" type="TileMap"]
+[node name="text_tile_map" type="TileMap"]
 light_mask = 3
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
