@@ -1,4 +1,5 @@
 extends Skill
+export var automatic := false
 
 export var BULLET : PackedScene
 onready var noise : Area2D = $noise_area

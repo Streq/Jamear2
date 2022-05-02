@@ -41,12 +41,13 @@ process_mode = 0
 one_shot = true
 
 [node name="pivot" type="Node2D" parent="."]
-position = Vector2( 4, 0 )
 
 [node name="vista" parent="pivot" instance=ExtResource( 1 )]
+position = Vector2( 1, 0 )
 radius = 180.0
 angle_degs = 45.0
 
 [node name="Sprite" type="Sprite" parent="pivot"]
+position = Vector2( 4, 0 )
 rotation = -1.57079
 texture = ExtResource( 3 )

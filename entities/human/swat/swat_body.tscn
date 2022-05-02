@@ -3,7 +3,7 @@
 [ext_resource path="res://entities/human/human_body.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/human/guard/gun.gd" type="Script" id=2]
 [ext_resource path="res://entities/human/guard/bullet.tscn" type="PackedScene" id=3]
-[ext_resource path="res://asset/texture/Guardia-Sheet.png" type="Texture" id=4]
+[ext_resource path="res://asset/texture/Soldado-Sheet.png" type="Texture" id=4]
 [ext_resource path="res://entities/human/guard/noise_area.gd" type="Script" id=5]
 [ext_resource path="res://asset/audio/Sfx/Mantecold_Fire_Shot.ogg" type="AudioStream" id=6]
 
@@ -15,7 +15,8 @@ resource_name = "aim"
 
 [node name="guard_body" instance=ExtResource( 1 )]
 collision_mask = 9
-sprite_name = "guard"
+sprite_name = "swat"
+speed = 90.0
 
 [node name="skill" type="Node2D" parent="." index="3"]
 script = ExtResource( 2 )
