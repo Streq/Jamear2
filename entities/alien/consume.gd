@@ -7,6 +7,7 @@ func _enter(params):
 	victim = params[0]
 	owner.anim.play("consume")
 	victim.global_position = owner.global_position
+	victim.vista.active = false
 	victim.state.current.emit_signal("finish", "consumed", null)
 	owner.anim.connect("animation_finished", self, "_on_animation_finished")
 	pass

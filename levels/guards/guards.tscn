@@ -1,17 +1,23 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://terrain/vent_connection.tscn" type="PackedScene" id=2]
 [ext_resource path="res://levels/guards/patrol_path.gd" type="Script" id=3]
 [ext_resource path="res://entities/goal_zone/goal_zone.tscn" type="PackedScene" id=4]
-[ext_resource path="res://HUD/time_bar.gd" type="Script" id=5]
+[ext_resource path="res://levels/level.gd" type="Script" id=5]
 [ext_resource path="res://entities/human/guard/guard.tscn" type="PackedScene" id=6]
 [ext_resource path="res://terrain/wall_autotile.tscn" type="PackedScene" id=7]
 [ext_resource path="res://terrain/floor_autotile.tscn" type="PackedScene" id=8]
 [ext_resource path="res://terrain/wall_vent_connection.tscn" type="PackedScene" id=9]
+[ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=10]
 [ext_resource path="res://terrain/navigation_tilemap.tscn" type="PackedScene" id=11]
 
 [node name="Node2D" type="YSort"]
+script = ExtResource( 5 )
+song = "level2"
+ambience = "ambience"
+
+[node name="HUD" parent="." instance=ExtResource( 10 )]
 
 [node name="wall_vent_connection" parent="." instance=ExtResource( 9 )]
 position = Vector2( -280, -288 )
@@ -43,28 +49,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 color = Color( 0.0313726, 0.0117647, 0.027451, 1 )
-
-[node name="controls" type="Label" parent="."]
-modulate = Color( 0, 1, 0.717647, 1 )
-light_mask = 0
-margin_left = -165.0
-margin_top = -295.0
-margin_right = 254.0
-margin_bottom = -264.0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_as_outline = 1
-text = "wasd o flechitas para moverse, click izquierdo para comerse a alguien, 
-click derecho para usar su habilidad
-espacio para destransformarse
-zoom con + y -"
-
-[node name="HUD" type="CanvasLayer" parent="."]
-layer = 10
-
-[node name="ProgressBar" type="ProgressBar" parent="HUD"]
-margin_right = 164.0
-margin_bottom = 14.0
-script = ExtResource( 5 )
 
 [node name="player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -244, -254 )
@@ -192,9 +176,6 @@ position = Vector2( -40, -56 )
 
 [node name="ventB" parent="vent_connection2" index="1"]
 position = Vector2( -40, -8 )
-
-[connection signal="max_transformation_time_changed" from="player" to="HUD/ProgressBar" method="set_max"]
-[connection signal="transformation_time_changed" from="player" to="HUD/ProgressBar" method="set_value"]
 
 [editable path="wall_vent_connection"]
 [editable path="vent_connection"]

@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://global/levels/levels.gd" type="Script" id=1]
 [ext_resource path="res://levels/2/2.tscn" type="PackedScene" id=2]
 [ext_resource path="res://global/levels/level.gd" type="Script" id=3]
 [ext_resource path="res://test/mockup/mockup_test.tscn" type="PackedScene" id=4]
+[ext_resource path="res://test/security_camera/security_camera_test.tscn" type="PackedScene" id=5]
+[ext_resource path="res://levels/guards/guards.tscn" type="PackedScene" id=6]
 [ext_resource path="res://levels/0/0.tscn" type="PackedScene" id=11]
 
 [node name="Levels" type="Node"]
@@ -20,3 +22,11 @@ scene = ExtResource( 4 )
 [node name="1" type="Node" parent="."]
 script = ExtResource( 3 )
 scene = ExtResource( 2 )
+
+[node name="3" type="Node" parent="."]
+script = ExtResource( 3 )
+scene = ExtResource( 6 )
+
+[node name="4" type="Node" parent="."]
+script = ExtResource( 3 )
+scene = ExtResource( 5 )
