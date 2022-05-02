@@ -71,6 +71,7 @@ func _on_can_attack(val):
 
 
 func _on_dead():
+	yield(body.anim,"animation_finished")
 	get_tree().reload_current_scene()
 
 func transform_into_deferred(new_body: KinematicBody2D):
