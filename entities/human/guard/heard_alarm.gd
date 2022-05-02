@@ -11,7 +11,7 @@ func _enter(params):
 	body = get_parent().get_parent()
 	body.expression_anim.play("curious_alert")
 	if body.memory.anxious:
-		timer.start(0.01)
+		timer.start()#0.01)
 	else:
 		timer.start()
 	body.memory.anxious = true

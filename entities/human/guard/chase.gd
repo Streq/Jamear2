@@ -15,7 +15,7 @@ func physics_update(delta):
 			var target_from_memory = memory.target_position
 		
 			var dist = target_from_memory - body.global_position
-			if dist.length_squared() < 1024.0:
+			if dist.length_squared() < 256.0:
 				emit_signal("finish", "look_around", null)
 			else:
 				body.dir = dist.normalized()

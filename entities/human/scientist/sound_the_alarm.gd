@@ -21,7 +21,7 @@ func _physics_update(delta):
 		body.memory.remember(target_body)
 		body.look_at_position(target_body.global_position)
 	if alarm:
-		if (target - body.global_position).length_squared() > 1024.0:
+		if (target - body.global_position).length_squared() > 256.0:
 			generate_path()
 			navigate()
 		else:

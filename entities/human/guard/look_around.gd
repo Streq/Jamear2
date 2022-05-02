@@ -38,7 +38,7 @@ func physics_update(delta):
 				target_rot += look_angle
 				
 				
-			body.point_to(Math.approach(body.point_angle, target_rot, delta*3.0))
+			body.point_to(Math.approach(body.point_angle, target_rot, delta*2.0))
 			var rotation = body.point_angle
 			if abs(rotation - target_rot) < PI/90.0:
 				initial_rotation = target_rot
