@@ -9,7 +9,7 @@
 [ext_resource path="res://audio/AudioCrossfadePlayer.tscn" type="PackedScene" id=7]
 [ext_resource path="res://asset/audio/Music/SFX_Stinger_Win_.ogg" type="AudioStream" id=8]
 
-[node name="Node2D2" type="Node2D"]
+[node name="Node2D3" type="Node2D"]
 script = ExtResource( 3 )
 
 [node name="player" parent="." instance=ExtResource( 7 )]

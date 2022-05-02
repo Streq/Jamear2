@@ -10,7 +10,7 @@
 [ext_resource path="res://terrain/wall_autotile.tscn" type="PackedScene" id=8]
 [ext_resource path="res://terrain/floor_autotile.tscn" type="PackedScene" id=9]
 
-[node name="Node2D2" type="YSort"]
+[node name="Node2D3" type="YSort"]
 script = ExtResource( 6 )
 song = "level1"
 ambience = "ambience"

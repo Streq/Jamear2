@@ -35,5 +35,7 @@ stream = ExtResource( 5 )
 [node name="Position2D" type="Position2D" parent="." groups=["alarm_position"]]
 position = Vector2( 0, 9 )
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="alarm" from="." to="sprite" method="_on_alarm_button_alarm"]
 [connection signal="deactivated" from="." to="sprite" method="_on_alarm_button_deactivated"]

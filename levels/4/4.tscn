@@ -17,7 +17,7 @@
 [ext_resource path="res://terrain/alarm_button.tscn" type="PackedScene" id=15]
 [ext_resource path="res://terrain/door_v.tscn" type="PackedScene" id=16]
 
-[node name="Node2D2" type="YSort"]
+[node name="Node2D3" type="YSort"]
 script = ExtResource( 10 )
 song = "level2"
 
