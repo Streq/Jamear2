@@ -16,6 +16,7 @@
 [ext_resource path="res://terrain/navigation_tilemap.tscn" type="PackedScene" id=14]
 [ext_resource path="res://entities/human/scientist/scientist.tscn" type="PackedScene" id=15]
 [ext_resource path="res://levels/level.gd" type="Script" id=16]
+[ext_resource path="res://terrain/bump.tscn" type="PackedScene" id=17]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -37,9 +38,6 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 0/shape_one_way_margin = 0.0
 0/shapes = [  ]
 0/z_index = 0
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 16, 32 )
 
 [node name="level" type="YSort"]
 script = ExtResource( 16 )
@@ -129,11 +127,7 @@ visible = false
 tile_set = SubResource( 2 )
 tile_data = PoolIntArray( -131079, 0, 0, -131078, 0, 0, -131077, 0, 0, -65543, 0, 0, -65542, 0, 0, -65541, 0, 0, -131072, 0, 0, -131071, 0, 0, -131070, 0, 0, -131069, 0, 0, -131068, 0, 0, -131067, 0, 0, -131066, 0, 0, -9, 0, 0, -8, 0, 0, -7, 0, 0, -6, 0, 0, -5, 0, 0, -4, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, 65528, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 131065, 0, 0, 131066, 0, 0, 131067, 0, 0, 131068, 0, 0, 131069, 0, 0, 196601, 0, 0, 196602, 0, 0, 196603, 0, 0, 262137, 0, 0, 262138, 0, 0, 262139, 0, 0, 327673, 0, 0, 327674, 0, 0, 327675, 0, 0 )
 
-[node name="bump" type="StaticBody2D" parent="."]
-position = Vector2( 176, -8 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bump"]
-shape = SubResource( 3 )
+[node name="bump" parent="." instance=ExtResource( 17 )]
 
 [node name="scientist" parent="." instance=ExtResource( 15 )]
 position = Vector2( -88, 32 )

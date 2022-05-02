@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://asset/texture/wall.png" type="Texture" id=1]
 [ext_resource path="res://terrain/navigation_tilemap.tscn" type="PackedScene" id=2]
+[ext_resource path="res://terrain/navigation.gd" type="Script" id=3]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -25,9 +26,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 0/z_index = 0
 
 [node name="navigation" type="Navigation2D" groups=["navigation"]]
+script = ExtResource( 3 )
 
-[node name="navigation_tilemap" type="TileMap" parent="." instance=ExtResource( 2 )]
-modulate = Color( 0.231373, 0.231373, 0.231373, 0.235294 )
+[node name="navigation_tilemap" parent="." instance=ExtResource( 2 )]
 tile_set = SubResource( 2 )
-cell_size = Vector2( 16, 16 )
-format = 1

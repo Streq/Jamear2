@@ -7,7 +7,7 @@ export var pause_time = 0.5
 onready var pivot = $pivot
 onready var vista = $pivot/vista
 onready var alarm = $alarm
-
+var is_player = false
 
 func _physics_process(delta):
 	var tree = get_tree()

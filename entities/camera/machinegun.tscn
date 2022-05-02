@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://entities/human/guard/gun.gd" type="Script" id=1]
+[ext_resource path="res://entities/human/guard/noise_area.gd" type="Script" id=2]
+[ext_resource path="res://entities/human/guard/bullet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://asset/audio/Sfx/Mantecold_Fire_Shot.ogg" type="AudioStream" id=4]
+[ext_resource path="res://asset/texture/machinegun.png" type="Texture" id=5]
+[ext_resource path="res://entities/camera/machinegun.gd" type="Script" id=6]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 150.0
+
+[node name="machinegun" type="Node2D"]
+show_behind_parent = true
+script = ExtResource( 6 )
+
+[node name="skill" type="Node2D" parent="."]
+position = Vector2( 7, 1 )
+script = ExtResource( 1 )
+BULLET = ExtResource( 3 )
+
+[node name="noise_area" type="Area2D" parent="skill"]
+visible = false
+collision_layer = 128
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="skill/noise_area"]
+shape = SubResource( 1 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="skill"]
+stream = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 7, 1 )
+texture = ExtResource( 5 )
+
+[node name="cooldown" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true

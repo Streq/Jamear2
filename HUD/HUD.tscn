@@ -37,7 +37,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "alarm"
-length = 2.4
+length = 4.8
 step = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("alarm_sprite:frame")
@@ -46,10 +46,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4, 0.8, 1.2, 1.6, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.4, 0.8, 1.2, 1.6, 2, 2.4, 2.8, 3.2, 3.6, 4, 4.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 1, 0, 1, 0, 1, 0 ]
+"values": [ 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 ]
 }
 
 [sub_resource type="DynamicFont" id=1]
