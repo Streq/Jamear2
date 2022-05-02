@@ -2,7 +2,7 @@
 
 [ext_resource path="res://vision/vista.tscn" type="PackedScene" id=1]
 [ext_resource path="res://terrain/alarm_button.gd" type="Script" id=2]
-[ext_resource path="res://asset/texture/wall.png" type="Texture" id=3]
+[ext_resource path="res://asset/texture/camera.png" type="Texture" id=3]
 [ext_resource path="res://entities/camera/security_camera.gd" type="Script" id=4]
 [ext_resource path="res://state_machine/state_machine.tscn" type="PackedScene" id=5]
 [ext_resource path="res://entities/camera/detected.gd" type="Script" id=6]
@@ -47,5 +47,5 @@ radius = 180.0
 angle_degs = 45.0
 
 [node name="Sprite" type="Sprite" parent="pivot"]
-scale = Vector2( 0.625, 0.375 )
+rotation = -1.57079
 texture = ExtResource( 3 )

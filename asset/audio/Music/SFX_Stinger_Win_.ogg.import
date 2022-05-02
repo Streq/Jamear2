@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SFX_Stinger_Win_.ogg-1a966dc9b23cb936472e079ad8484852.oggstr"
+
+[deps]
+
+source_file="res://asset/audio/Music/SFX_Stinger_Win_.ogg"
+dest_files=[ "res://.import/SFX_Stinger_Win_.ogg-1a966dc9b23cb936472e079ad8484852.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

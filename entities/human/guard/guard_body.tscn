@@ -15,12 +15,14 @@ resource_name = "aim"
 
 [node name="guard_body" instance=ExtResource( 1 )]
 collision_mask = 9
+sprite_name = "guard"
 
 [node name="skill" type="Node2D" parent="." index="3"]
 script = ExtResource( 2 )
 BULLET = ExtResource( 3 )
 
 [node name="noise_area" type="Area2D" parent="skill" index="0"]
+visible = false
 collision_layer = 128
 collision_mask = 0
 script = ExtResource( 5 )

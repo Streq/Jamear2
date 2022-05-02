@@ -5,6 +5,9 @@ var tracks = {}
 
 onready var music_player : AudioCrossfadePlayer = $player
 onready var ambience_player : AudioCrossfadePlayer = $player2
+
+var ambience_track := ""
+var music_track := ""
 func _ready():
 	for track in $tracks.get_children():
 		tracks[track.name] = track
@@ -12,10 +15,14 @@ func _ready():
 var main_song : AudioStreamPlayer
 
 func play_ambience(track_name:String):
-	var track : AudioStreamPlayer = tracks[track_name]
-	ambience_player.crossfade_to(track.stream)
+	if track_name != ambience_track:
+		var track : AudioStreamPlayer = tracks[track_name]
+		ambience_track = track_name
+		ambience_player.crossfade_to(track.stream)
 	
 
 func play_music(track_name:String):
-	var track : AudioStreamPlayer = tracks[track_name]
-	ambience_player.crossfade_to(track.stream)
+	if track_name != music_track:
+		var track : AudioStreamPlayer = tracks[track_name]
+		music_track = track_name
+		music_player.crossfade_to(track.stream)

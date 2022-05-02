@@ -11,6 +11,8 @@ onready var expression_anim = $AnimationPlayerExpressions
 onready var collider = $CollisionShape2D
 onready var hurtbox = $hurtbox/CollisionShape2D
 
+export var sprite_name := ""
+
 export var speed : float
 onready var state = $state_machine
 var velocity := Vector2()

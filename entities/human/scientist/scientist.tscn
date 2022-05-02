@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://entities/human/scientist/dead.gd" type="Script" id=1]
 [ext_resource path="res://entities/human/guard/idle.gd" type="Script" id=2]
@@ -13,9 +13,12 @@
 [ext_resource path="res://entities/human/guard/memory.gd" type="Script" id=11]
 [ext_resource path="res://entities/human/scientist/sound_the_alarm.gd" type="Script" id=12]
 [ext_resource path="res://entities/human/scientist/yell.gd" type="Script" id=13]
+[ext_resource path="res://entities/human/hearing.gd" type="Script" id=14]
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 125.0
+
+[sub_resource type="CircleShape2D" id=3]
 
 [node name="scientist" type="YSort"]
 script = ExtResource( 5 )
@@ -74,6 +77,15 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="addons/yell/Area2D"]
 shape = SubResource( 2 )
+
+[node name="hearing" type="Area2D" parent="addons"]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource( 14 )
+mind_state = NodePath("../behavior")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="addons/hearing"]
+shape = SubResource( 3 )
 
 [node name="look_for_patrol" type="Node" parent="."]
 script = ExtResource( 8 )

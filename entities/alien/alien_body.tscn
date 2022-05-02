@@ -216,6 +216,7 @@ tracks/2/keys = {
 [node name="alien_body" type="KinematicBody2D" groups=["alien"]]
 collision_layer = 8
 script = ExtResource( 3 )
+sprite_name = "alien"
 speed = 100.0
 
 [node name="display" type="YSort" parent="."]
