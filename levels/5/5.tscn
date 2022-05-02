@@ -18,7 +18,7 @@
 
 [node name="Node2D3" type="YSort"]
 script = ExtResource( 10 )
-song = "level2"
+song = "level3"
 
 [node name="HUD" parent="." instance=ExtResource( 3 )]
 
