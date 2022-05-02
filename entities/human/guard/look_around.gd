@@ -26,7 +26,7 @@ func physics_update(delta):
 		emit_signal("finish", "alert", null)
 		memory.remember(target_body)
 	elif look_around:
-		if looks < 20:
+		if looks < 2000:
 			var target_rot = initial_rotation
 			if looks == 0:
 				if memory.target_direction:
@@ -34,15 +34,16 @@ func physics_update(delta):
 				else: 
 					target_rot = initial_rotation
 			else:
-				var look_angle = deg2rad(160.0)
+				var look_angle = initial_rotation + deg2rad(120.0)*float(look_right)
 				target_rot += look_angle
 				
 				
 			body.point_to(Math.approach(body.point_angle, target_rot, delta*3.0))
 			var rotation = body.point_angle
 			if abs(rotation - target_rot) < PI/90.0:
+				initial_rotation = target_rot
 				looks += 1
-				look_right = !look_right
+				look_right = randi()%2>0
 				pause_duration.start()
 				look_around = false
 		else:

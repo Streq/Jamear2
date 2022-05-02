@@ -16,12 +16,19 @@ func _enter(params):
 	pass
 
 func _physics_update(delta):
-	if (target - body.global_position).length_squared() > 1024.0:
-		generate_path()
-		navigate()
+	var target_body = Global.get_player().body
+	if body.memory.suspects(target_body) and body.vista.can_see(target_body):
+		body.memory.remember(target_body)
+		body.look_at_position(target_body.global_position)
+	if alarm:
+		if (target - body.global_position).length_squared() > 1024.0:
+			generate_path()
+			navigate()
+		else:
+			body.skill.trigger_target(body.memory.target_position)
 	else:
+		body.dir = (body.global_position - body.memory.target_position).normalized()
 		body.skill.trigger_target(body.memory.target_position)
-
 func _ready():
 	yield(get_tree(),"idle_frame")
 	var tree = get_tree()
