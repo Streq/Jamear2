@@ -103,13 +103,21 @@ func attempt_transform():
 		detransform()
 
 func transform_into_target():
+	body.state._change_state("transform", [victim_name])
+	yield(body, "transform_finished")
 	transform_into_deferred(target_bod.instance())
 	set_deferred("transformed", true)
 	emit_signal("current_transform_target_changed", "alien")
+	
 func detransform():
 	transform_into_deferred(alien_bod.instance())
 	set_deferred("transformed", false)
 	emit_signal("current_transform_target_changed", victim_name)
+	call_deferred("detransform_anim")
+
+func detransform_anim():
+	body.state._change_state("detransform", [victim_name])
+	
 
 func set_transformation_time(val):
 	transformation_time = clamp(val, 0, max_transformation_time)

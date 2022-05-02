@@ -17,7 +17,11 @@ func _exit():
 func _physics_update(delta):
 	owner.velocity = owner.dir*owner.speed
 	owner.velocity = owner.move_and_slide(owner.velocity)
-
+	
+	if owner.velocity != Vector2():
+		anim.play("walk")
+	else:
+		anim.play("idle")
 
 func _on_vent(vent):
 	if active:

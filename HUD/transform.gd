@@ -16,5 +16,5 @@ func _on_current_transform_target_changed(val):
 	current.visible = true
 
 func _on_can_transform(val):
-	current.modulate = Color.white if val else Color(0.25,0.25,0.25)
+#	current.modulate = Color.white if val else Color(0.25,0.25,0.25)
 	label.visible = val

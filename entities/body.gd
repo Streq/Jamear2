@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 signal dead()
-
+signal transform_finished()
 onready var display = $display
 onready var vista = $vista
 onready var skill = $skill if has_node("skill") else Skill.new()
