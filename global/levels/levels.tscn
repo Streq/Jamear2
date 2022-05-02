@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://global/levels/levels.gd" type="Script" id=1]
 [ext_resource path="res://levels/2/2.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://levels/fin.tscn" type="PackedScene" id=9]
 [ext_resource path="res://levels/5/5.tscn" type="PackedScene" id=10]
 [ext_resource path="res://levels/0/0.tscn" type="PackedScene" id=11]
+[ext_resource path="res://levels/6/6.tscn" type="PackedScene" id=12]
 
 [node name="Levels" type="Node"]
 script = ExtResource( 1 )
@@ -38,6 +39,10 @@ scene = ExtResource( 8 )
 [node name="swat+camara" type="Node" parent="."]
 script = ExtResource( 3 )
 scene = ExtResource( 10 )
+
+[node name="camara_protege_cientifico" type="Node" parent="."]
+script = ExtResource( 3 )
+scene = ExtResource( 12 )
 
 [node name="fin" type="Node" parent="."]
 script = ExtResource( 3 )
