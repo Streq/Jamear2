@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://entities/human/scientist/dead.gd" type="Script" id=1]
 [ext_resource path="res://entities/human/guard/idle.gd" type="Script" id=2]
@@ -14,6 +14,9 @@
 [ext_resource path="res://entities/human/scientist/sound_the_alarm.gd" type="Script" id=12]
 [ext_resource path="res://entities/human/scientist/yell.gd" type="Script" id=13]
 [ext_resource path="res://entities/human/hearing.gd" type="Script" id=14]
+[ext_resource path="res://entities/human/scientist/heard_alarm.gd" type="Script" id=15]
+[ext_resource path="res://entities/human/scientist/goto_curious.gd" type="Script" id=16]
+[ext_resource path="res://entities/human/player_detector.tscn" type="PackedScene" id=17]
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 125.0
@@ -64,6 +67,23 @@ stream = ExtResource( 6 )
 [node name="dead" type="Node" parent="addons/behavior"]
 script = ExtResource( 1 )
 
+[node name="heard_alarm" type="Node" parent="addons/behavior"]
+script = ExtResource( 15 )
+
+[node name="reaction_time" type="Timer" parent="addons/behavior/heard_alarm"]
+wait_time = 0.5
+one_shot = true
+
+[node name="heard_noise" type="Node" parent="addons/behavior"]
+script = ExtResource( 15 )
+
+[node name="reaction_time" type="Timer" parent="addons/behavior/heard_noise"]
+wait_time = 0.5
+one_shot = true
+
+[node name="goto_curious" type="Node" parent="addons/behavior"]
+script = ExtResource( 16 )
+
 [node name="memory" type="Node" parent="addons"]
 script = ExtResource( 11 )
 
@@ -87,6 +107,8 @@ mind_state = NodePath("../behavior")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="addons/hearing"]
 shape = SubResource( 3 )
 
+[node name="player_detector" parent="addons" instance=ExtResource( 17 )]
+
 [node name="look_for_patrol" type="Node" parent="."]
 script = ExtResource( 8 )
 
@@ -96,5 +118,7 @@ speed = 85.0
 [connection signal="timeout" from="addons/behavior/look_around/start_cooldown" to="addons/behavior/look_around" method="_on_start_cooldown_timeout"]
 [connection signal="timeout" from="addons/behavior/look_around/pause_duration" to="addons/behavior/look_around" method="_on_pause_duration_timeout"]
 [connection signal="timeout" from="addons/behavior/alert/reaction_time" to="addons/behavior/alert" method="_on_reaction_time_timeout"]
+[connection signal="timeout" from="addons/behavior/heard_alarm/reaction_time" to="addons/behavior/heard_alarm" method="_on_reaction_time_timeout"]
+[connection signal="timeout" from="addons/behavior/heard_noise/reaction_time" to="addons/behavior/heard_noise" method="_on_reaction_time_timeout"]
 [connection signal="patrol_found" from="look_for_patrol" to="addons/behavior/patrol" method="set_patrol"]
 [connection signal="dead" from="body" to="." method="_on_dead"]

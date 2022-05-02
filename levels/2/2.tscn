@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/goal_zone/goal_zone.tscn" type="PackedScene" id=2]
@@ -9,11 +9,24 @@
 [ext_resource path="res://levels/level.gd" type="Script" id=7]
 [ext_resource path="res://entities/human/guard/guard.tscn" type="PackedScene" id=8]
 [ext_resource path="res://terrain/wall_vent_connection.tscn" type="PackedScene" id=9]
+[ext_resource path="res://entities/camera/path.tscn" type="PackedScene" id=10]
 [ext_resource path="res://entities/patrol.tscn" type="PackedScene" id=11]
+[ext_resource path="res://entities/camera/security_camera.tscn" type="PackedScene" id=12]
 [ext_resource path="res://terrain/navigation.tscn" type="PackedScene" id=13]
 
 [node name="Node2D" type="YSort"]
 script = ExtResource( 7 )
+
+[node name="HUD" parent="." instance=ExtResource( 5 )]
+
+[node name="security_camera" parent="." instance=ExtResource( 12 )]
+position = Vector2( -48, 0 )
+z_index = 2
+
+[node name="path" parent="security_camera" instance=ExtResource( 10 )]
+
+[node name="Position2D" type="Position2D" parent="security_camera/path"]
+position = Vector2( 48, 0 )
 
 [node name="floor_autotile" parent="." instance=ExtResource( 4 )]
 light_mask = 3
@@ -41,8 +54,6 @@ position = Vector2( -128, 80 )
 
 [node name="goal_zone" parent="." instance=ExtResource( 2 )]
 position = Vector2( -8, -120 )
-
-[node name="HUD" parent="." instance=ExtResource( 5 )]
 
 [node name="vent_connection" parent="." instance=ExtResource( 6 )]
 

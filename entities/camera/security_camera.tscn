@@ -11,7 +11,7 @@
 [ext_resource path="res://asset/audio/Sfx/SFX_Alarma.ogg" type="AudioStream" id=9]
 [ext_resource path="res://asset/audio/Sfx/SFX_Stinger_HIT_.ogg" type="AudioStream" id=10]
 
-[node name="security_camera" type="Node2D"]
+[node name="security_camera" type="Node2D" groups=["player_detector"]]
 script = ExtResource( 4 )
 speed_degrees = 35
 
@@ -41,6 +41,7 @@ process_mode = 0
 one_shot = true
 
 [node name="pivot" type="Node2D" parent="."]
+position = Vector2( 4, 0 )
 
 [node name="vista" parent="pivot" instance=ExtResource( 1 )]
 radius = 180.0

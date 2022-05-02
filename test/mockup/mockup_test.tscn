@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://asset/texture/Mockup.png" type="Texture" id=2]
@@ -6,7 +6,7 @@
 [ext_resource path="res://terrain/wall_autotile.tscn" type="PackedScene" id=4]
 [ext_resource path="res://terrain/floor_autotile.tscn" type="PackedScene" id=5]
 [ext_resource path="res://terrain/furniture_tilemap.tscn" type="PackedScene" id=6]
-[ext_resource path="res://HUD/time_bar.gd" type="Script" id=7]
+[ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=7]
 [ext_resource path="res://entities/human/guard/guard.tscn" type="PackedScene" id=8]
 [ext_resource path="res://terrain/vent_connection.tscn" type="PackedScene" id=9]
 [ext_resource path="res://terrain/wall_vent_connection.tscn" type="PackedScene" id=10]
@@ -15,6 +15,7 @@
 [ext_resource path="res://asset/texture/wall.png" type="Texture" id=13]
 [ext_resource path="res://terrain/navigation_tilemap.tscn" type="PackedScene" id=14]
 [ext_resource path="res://entities/human/scientist/scientist.tscn" type="PackedScene" id=15]
+[ext_resource path="res://levels/level.gd" type="Script" id=16]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -40,7 +41,17 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 16, 32 )
 
-[node name="Node2D" type="YSort"]
+[node name="level" type="YSort"]
+script = ExtResource( 16 )
+ambience = "ambience"
+
+[node name="vent_connection" parent="." instance=ExtResource( 9 )]
+position = Vector2( 48, 16 )
+
+[node name="ventA" parent="vent_connection" index="0"]
+position = Vector2( -72, -8 )
+
+[node name="HUD" parent="." instance=ExtResource( 7 )]
 
 [node name="wall_text" parent="." instance=ExtResource( 12 )]
 position = Vector2( -8, -24 )
@@ -78,16 +89,8 @@ anchor_bottom = 1.0
 mouse_filter = 2
 color = Color( 0.0313726, 0.0117647, 0.027451, 1 )
 
-[node name="HUD" type="CanvasLayer" parent="."]
-layer = 10
-
-[node name="ProgressBar" type="ProgressBar" parent="HUD"]
-margin_right = 164.0
-margin_bottom = 14.0
-script = ExtResource( 7 )
-
 [node name="player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 120, 0 )
+position = Vector2( 120, -8 )
 
 [node name="Camera2D" parent="player/addons" index="2"]
 zoom_level = 3
@@ -119,13 +122,8 @@ rotation = -3.14159
 position = Vector2( 24, -16 )
 rotation = -3.14159
 
-[node name="vent_connection" parent="." instance=ExtResource( 9 )]
-position = Vector2( 48, 16 )
-
-[node name="ventA" parent="vent_connection" index="0"]
-position = Vector2( -72, -8 )
-
 [node name="navigation" type="Navigation2D" parent="." groups=["navigation"]]
+visible = false
 
 [node name="navigation_tilemap" parent="navigation" instance=ExtResource( 14 )]
 tile_set = SubResource( 2 )
@@ -141,9 +139,6 @@ shape = SubResource( 3 )
 position = Vector2( -88, 32 )
 rotation = -3.14159
 
-[connection signal="max_transformation_time_changed" from="player" to="HUD/ProgressBar" method="set_max"]
-[connection signal="transformation_time_changed" from="player" to="HUD/ProgressBar" method="set_value"]
-
+[editable path="vent_connection"]
 [editable path="wall_vent_connection"]
 [editable path="player"]
-[editable path="vent_connection"]

@@ -1,0 +1,70 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://entities/goal_zone/goal_zone.tscn" type="PackedScene" id=1]
+[ext_resource path="res://terrain/floor_autotile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://terrain/wall_autotile.tscn" type="PackedScene" id=4]
+[ext_resource path="res://entities/human/guard/guard.tscn" type="PackedScene" id=5]
+[ext_resource path="res://entities/camera/path.tscn" type="PackedScene" id=6]
+[ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=7]
+[ext_resource path="res://levels/level.gd" type="Script" id=8]
+[ext_resource path="res://terrain/navigation.tscn" type="PackedScene" id=9]
+[ext_resource path="res://entities/patrol.tscn" type="PackedScene" id=10]
+[ext_resource path="res://entities/camera/security_camera.tscn" type="PackedScene" id=11]
+
+[node name="Node2D" type="YSort"]
+script = ExtResource( 8 )
+
+[node name="security_camera" parent="." instance=ExtResource( 11 )]
+position = Vector2( -48, 0 )
+z_index = 2
+
+[node name="path" parent="security_camera" instance=ExtResource( 6 )]
+
+[node name="Position2D" type="Position2D" parent="security_camera/path"]
+position = Vector2( 48, 0 )
+
+[node name="floor_autotile" parent="." instance=ExtResource( 2 )]
+light_mask = 3
+z_index = -10
+
+[node name="wall_autotile" parent="." instance=ExtResource( 4 )]
+light_mask = 3
+z_index = 4
+occluder_light_mask = 3
+tile_data = PoolIntArray( -1048581, 0, 1, -1048580, 0, 458754, -1048579, 0, 458754, -1048578, 0, 327682, -1048577, 0, 458754, -1114112, 0, 327682, -1114111, 0, 196610, -1114110, 0, 196610, -1114109, 0, 458754, -1114108, 0, 196610, -1114107, 0, 327682, -1114106, 0, 196610, -1114105, 0, 458754, -1114104, 0, 327682, -1114103, 0, 196610, -1114102, 0, 196610, -1114101, 0, 458754, -1114100, 0, 196610, -1114099, 0, 327682, -1114098, 0, 327682, -1114097, 0, 196610, -1114096, 0, 196610, -1114095, 0, 327682, -1114094, 0, 458754, -1114093, 0, 458754, -1114092, 0, 458754, -1114091, 0, 327682, -1114090, 0, 3, -983045, 0, 65536, -1048554, 0, 65536, -917509, 0, 65536, -983018, 0, 65536, -851973, 0, 65536, -917482, 0, 65536, -786437, 0, 65536, -851946, 0, 65536, -720901, 0, 65536, -786410, 0, 65536, -655365, 0, 65536, -720874, 0, 65536, -589829, 0, 65536, -655338, 0, 65536, -524293, 0, 65536, -589802, 0, 65536, -458757, 0, 65536, -524266, 0, 65536, -393221, 0, 65536, -458730, 0, 65536, -327685, 0, 65537, -327684, 0, 196610, -327683, 0, 458755, -393214, 0, 458753, -393213, 0, 458754, -393212, 0, 2, -393211, 0, 458754, -393210, 0, 458754, -393209, 0, 196610, -393208, 0, 196610, -393207, 0, 327682, -393206, 0, 458754, -393205, 0, 196610, -393204, 0, 327682, -393203, 0, 458754, -393202, 0, 458754, -393201, 0, 458754, -393200, 0, 327682, -393199, 0, 458754, -393198, 0, 458754, -393197, 0, 458754, -393196, 0, 327682, -393195, 0, 458754, -393194, 0, 65539, -262149, 0, 65536, -327676, 0, 65536, -327658, 0, 65536, -196613, 0, 65536, -262140, 0, 65536, -262122, 0, 65536, -131077, 0, 65536, -196604, 0, 65536, -196586, 0, 65536, -65541, 0, 65536, -131068, 0, 65536, -131050, 0, 65536, -5, 0, 65536, -65532, 0, 65536, -65514, 0, 65536, 65531, 0, 65536, 4, 0, 65536, 22, 0, 65536, 131067, 0, 65536, 65540, 0, 65536, 65558, 0, 65536, 196602, 0, 8, 196603, 0, 9, 196604, 0, 10, 196605, 0, 10, 196606, 0, 10, 196607, 0, 11, 131073, 0, 8, 131074, 0, 10, 131075, 0, 10, 131076, 0, 9, 131077, 0, 10, 131078, 0, 10, 131079, 0, 10, 131080, 0, 10, 131081, 0, 10, 131082, 0, 10, 131083, 0, 10, 131084, 0, 10, 131085, 0, 10, 131086, 0, 10, 131087, 0, 10, 131088, 0, 10, 131089, 0, 10, 131090, 0, 10, 131091, 0, 10, 131092, 0, 10, 131093, 0, 10, 131094, 0, 65543, 262138, 0, 65544, 262139, 0, 131081, 262140, 0, 131081, 262141, 0, 131081, 262142, 0, 131081, 262143, 0, 131083, 196609, 0, 65544, 196610, 0, 131081, 196611, 0, 131081, 196612, 0, 131081, 196613, 0, 131081, 196614, 0, 131081, 196615, 0, 131081, 196616, 0, 131081, 196617, 0, 131081, 196618, 0, 131081, 196619, 0, 131081, 196620, 0, 131081, 196621, 0, 131081, 196622, 0, 131081, 196623, 0, 131081, 196624, 0, 131081, 196625, 0, 131081, 196626, 0, 131081, 196627, 0, 131081, 196628, 0, 131081, 196629, 0, 131081, 196630, 0, 131083, 327674, 0, 196616, 327675, 0, 458761, 327676, 0, 327689, 327677, 0, 196617, 327678, 0, 327689, 327679, 0, 196619, 262145, 0, 327688, 262146, 0, 196617, 262147, 0, 458761, 262148, 0, 458761, 262149, 0, 327689, 262150, 0, 196617, 262151, 0, 196617, 262152, 0, 327689, 262153, 0, 327689, 262154, 0, 458761, 262155, 0, 327689, 262156, 0, 196617, 262157, 0, 327689, 262158, 0, 327689, 262159, 0, 196617, 262160, 0, 196617, 262161, 0, 196617, 262162, 0, 196617, 262163, 0, 458761, 262164, 0, 196617, 262165, 0, 196617, 262166, 0, 196619 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+light_mask = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.0313726, 0.0117647, 0.027451, 1 )
+
+[node name="player" parent="." instance=ExtResource( 3 )]
+position = Vector2( -8, -120 )
+
+[node name="goal_zone" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -584 )
+
+[node name="HUD" parent="." instance=ExtResource( 7 )]
+
+[node name="guard" parent="." instance=ExtResource( 5 )]
+position = Vector2( -120, -40 )
+
+[node name="patrol" parent="guard" instance=ExtResource( 10 )]
+position = Vector2( 80, 0 )
+
+[node name="Position2D" type="Position2D" parent="guard/patrol"]
+position = Vector2( 80, 0.000202179 )
+
+[node name="Position2D2" type="Position2D" parent="guard/patrol"]
+position = Vector2( -160, -0.000404358 )
+
+[node name="navigation" parent="." instance=ExtResource( 9 )]
+
+[editable path="guard/patrol"]
+[editable path="navigation"]

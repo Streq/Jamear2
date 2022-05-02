@@ -20,9 +20,12 @@ func _enter(params):
 	angle = abs(start.angle_to(end))
 
 func _physics_update(delta):
-	var progress = elapsed/angle*deg2rad(owner.speed_degrees)
-	owner.pivot.global_rotation = lerp_angle(start_rot, end_rot, progress)
-	elapsed += delta
-	if progress >= 1.0:
-		index = (index+1)%path.size()
-		emit_signal("finish", "pause", null)
+	if angle:
+		var progress = elapsed/angle*deg2rad(owner.speed_degrees)
+		owner.pivot.global_rotation = lerp_angle(start_rot, end_rot, progress)
+		elapsed += delta
+		if progress >= 1.0:
+			index = (index+1)%path.size()
+			emit_signal("finish", "pause", null)
+	else:
+		owner.pivot.global_rotation = end_rot
