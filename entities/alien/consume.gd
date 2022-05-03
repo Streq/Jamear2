@@ -10,6 +10,7 @@ func _enter(params):
 	victim.vista.active = false
 	victim.state.current.emit_signal("finish", "consumed", null)
 	owner.anim.connect("animation_finished", self, "_on_animation_finished")
+	owner.get_node("eat_sound").play()
 	pass
 
 func _exit():
