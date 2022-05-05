@@ -12,7 +12,7 @@ func prev_level():
 	get_tree().change_scene_to(levels[current_level].scene)
 
 func _input(event):
-	if OS.is_debug_build:
+	if OS.is_debug_build():
 		if event.is_action_pressed("next_level"):
 			next_level()
 		if event.is_action_pressed("prev_level"):
