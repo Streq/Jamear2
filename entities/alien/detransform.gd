@@ -8,3 +8,6 @@ func _enter(params):
 func _anim_finished(name):
 	emit_signal("finish", "idle", null)
 	owner.emit_signal("transform_finished")
+
+func _exit():
+	anim.disconnect("animation_finished", self, "_anim_finished")
