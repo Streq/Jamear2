@@ -5,8 +5,9 @@ signal can_be_used(val)
 
 var usable : bool = false setget set_usable
 
-func trigger():
-	pass
+#returns whether it succeeded
+func trigger()->bool:
+	return false
 
 func set_usable(val:bool):
 	if usable != val:

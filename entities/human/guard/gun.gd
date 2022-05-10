@@ -4,8 +4,9 @@ export var automatic := false
 export var BULLET : PackedScene
 onready var noise : Area2D = $noise_area
 onready var audio : AudioStreamPlayer2D = $AudioStreamPlayer2D
-func trigger():
+func trigger()-> bool:
 	shoot()
+	return true
 
 func shoot():
 	var bullet = BULLET.instance()

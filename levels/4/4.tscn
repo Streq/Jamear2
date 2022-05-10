@@ -20,7 +20,7 @@
 [ext_resource path="res://terrain/wall_text_tilemap.tscn" type="PackedScene" id=18]
 [ext_resource path="res://terrain/wall_vent_connection.tscn" type="PackedScene" id=19]
 
-[node name="Node2D3" type="YSort"]
+[node name="Node2D4" type="YSort"]
 script = ExtResource( 10 )
 song = "level2"
 

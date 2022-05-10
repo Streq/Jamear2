@@ -20,12 +20,19 @@ func _physics_update(delta):
 	if body.memory.suspects(target_body) and body.vista.can_see(target_body):
 		body.memory.remember(target_body)
 	if alarm:
+		#not close enough to press
 		if (target - body.global_position).length_squared() > 256.0:
 			generate_path()
 			navigate()
+		#close enough to press
 		else:
-			body.skill.trigger_target(body.memory.target_position)
 			body.look_at_position(target_body.global_position)
+			var could_press = body.skill.trigger_target(body.memory.target_position)
+			if could_press:
+				emit_signal("finish", "look_around", null)
+				return
+			
+	#no alarm to press, run away and open anything in path
 	else:
 		body.look_at_position(target_body.global_position)
 		body.dir = (body.global_position - body.memory.target_position).normalized()
