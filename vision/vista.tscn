@@ -6,7 +6,7 @@
 [ext_resource path="res://vision/vista_npc.gd" type="Script" id=4]
 
 [sub_resource type="ViewportTexture" id=1]
-viewport_path = NodePath("Viewport")
+viewport_path = NodePath("Viewport2")
 
 [sub_resource type="ViewportTexture" id=2]
 viewport_path = NodePath("Viewport")
@@ -32,6 +32,22 @@ script = ExtResource( 3 )
 script = ExtResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="Viewport"]
+current = true
+
+[node name="Viewport2" type="Viewport" parent="."]
+size = Vector2( 640, 640 )
+transparent_bg = true
+usage = 0
+render_target_v_flip = true
+render_target_clear_mode = 1
+render_target_update_mode = 1
+script = ExtResource( 3 )
+
+[node name="vista_renderer" type="Node2D" parent="Viewport2"]
+script = ExtResource( 2 )
+use_owner_angle = false
+
+[node name="Camera2D" type="Camera2D" parent="Viewport2"]
 current = true
 
 [node name="vista_jugador" type="Node2D" parent="."]

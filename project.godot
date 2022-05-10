@@ -97,6 +97,7 @@ window/size/width=320
 window/size/height=224
 window/size/test_width=1280
 window/size/test_height=896
+mouse_cursor/custom_image_hotspot=Vector2( 8, 8 )
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
