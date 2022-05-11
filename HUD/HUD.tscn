@@ -143,8 +143,9 @@ rect_min_size = Vector2( 40, 0 )
 
 [node name="hide_sprite" type="Sprite" parent="sight"]
 light_mask = 0
-position = Vector2( 20, 15 )
+position = Vector2( 8, 0 )
 texture = ExtResource( 1 )
+centered = false
 hframes = 2
 script = ExtResource( 19 )
 

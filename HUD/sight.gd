@@ -2,6 +2,8 @@ extends Sprite
 
 
 func _ready():
+	print("ojo")
+	print(global_position)
 	for detector in Global.get_all_of("player_detector"):
 		detector.connect("player_detected", self, "_on_player_detected")
 	
