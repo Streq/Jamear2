@@ -20,9 +20,6 @@
 [ext_resource path="res://asset/texture/tag.png" type="Texture" id=18]
 [ext_resource path="res://HUD/sight.gd" type="Script" id=19]
 
-[sub_resource type="DynamicFont" id=1]
-font_data = ExtResource( 13 )
-
 [sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "value"
@@ -55,6 +52,9 @@ tracks/0/keys = {
 "values": [ 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 ]
 }
 
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 13 )
+
 [node name="HUD" type="CanvasLayer"]
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -64,75 +64,6 @@ position = Vector2( 24, 0 )
 scale = Vector2( 0.333, 0.333 )
 texture = ExtResource( 4 )
 centered = false
-
-[node name="attack" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 40, 26 )
-
-[node name="Sprite" type="Sprite" parent="attack"]
-visible = false
-light_mask = 0
-position = Vector2( 20, 15 )
-texture = ExtResource( 7 )
-hframes = 2
-script = ExtResource( 8 )
-
-[node name="Sprite2" type="Sprite" parent="attack"]
-visible = false
-light_mask = 0
-position = Vector2( 20, 15 )
-texture = ExtResource( 7 )
-hframes = 2
-frame = 1
-script = ExtResource( 9 )
-
-[node name="transform" type="Control" parent="."]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_top = -40.0
-margin_right = 40.0
-rect_min_size = Vector2( 40, 26 )
-script = ExtResource( 17 )
-
-[node name="container" type="Sprite" parent="transform"]
-light_mask = 0
-position = Vector2( 20, 15 )
-texture = ExtResource( 18 )
-
-[node name="scientist" type="Sprite" parent="transform"]
-visible = false
-light_mask = 0
-position = Vector2( 20, 10 )
-texture = ExtResource( 15 )
-
-[node name="alien" type="Sprite" parent="transform"]
-visible = false
-light_mask = 0
-position = Vector2( 20, 17 )
-texture = ExtResource( 12 )
-
-[node name="guard" type="Sprite" parent="transform"]
-visible = false
-light_mask = 0
-position = Vector2( 20, 10 )
-texture = ExtResource( 14 )
-
-[node name="swat" type="Sprite" parent="transform"]
-visible = false
-light_mask = 0
-position = Vector2( 20, 10 )
-texture = ExtResource( 16 )
-
-[node name="Label" type="Label" parent="transform"]
-visible = false
-light_mask = 0
-margin_left = 17.0
-margin_top = 27.0
-margin_right = 24.0
-margin_bottom = 41.0
-custom_fonts/font = SubResource( 1 )
-text = "E"
 
 [node name="sight" type="Control" parent="."]
 anchor_left = 1.0
@@ -183,11 +114,78 @@ texture_progress = ExtResource( 3 )
 texture_progress_offset = Vector2( 13, 9 )
 script = ExtResource( 6 )
 
+[node name="attack" type="Control" parent="."]
+margin_left = 40.0
+margin_right = 80.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 26 )
+
+[node name="Sprite" type="Sprite" parent="attack"]
+visible = false
+light_mask = 0
+position = Vector2( 20, 15 )
+texture = ExtResource( 7 )
+hframes = 2
+script = ExtResource( 8 )
+
+[node name="Sprite2" type="Sprite" parent="attack"]
+visible = false
+light_mask = 0
+position = Vector2( 20, 15 )
+texture = ExtResource( 7 )
+hframes = 2
+frame = 1
+script = ExtResource( 9 )
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 light_mask = 0
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -147.0
-margin_right = 147.0
-margin_bottom = 40.0
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -40.0
+margin_right = 40.0
 alignment = 1
+
+[node name="transform" type="Control" parent="HBoxContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 26 )
+script = ExtResource( 17 )
+
+[node name="container" type="Sprite" parent="HBoxContainer/transform"]
+light_mask = 0
+position = Vector2( 20, 15 )
+texture = ExtResource( 18 )
+
+[node name="scientist" type="Sprite" parent="HBoxContainer/transform"]
+visible = false
+light_mask = 0
+position = Vector2( 20, 10 )
+texture = ExtResource( 15 )
+
+[node name="alien" type="Sprite" parent="HBoxContainer/transform"]
+visible = false
+light_mask = 0
+position = Vector2( 20, 17 )
+texture = ExtResource( 12 )
+
+[node name="guard" type="Sprite" parent="HBoxContainer/transform"]
+visible = false
+light_mask = 0
+position = Vector2( 20, 10 )
+texture = ExtResource( 14 )
+
+[node name="swat" type="Sprite" parent="HBoxContainer/transform"]
+visible = false
+light_mask = 0
+position = Vector2( 20, 10 )
+texture = ExtResource( 16 )
+
+[node name="Label" type="Label" parent="HBoxContainer/transform"]
+visible = false
+light_mask = 0
+margin_left = 17.0
+margin_top = 27.0
+margin_right = 24.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 1 )
+text = "E"

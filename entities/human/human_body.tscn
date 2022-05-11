@@ -166,7 +166,7 @@ tracks/1/keys = {
 
 [sub_resource type="RectangleShape2D" id=13]
 
-[node name="human_body" type="KinematicBody2D"]
+[node name="human_body" type="KinematicBody2D" groups=["body"]]
 collision_layer = 8
 input_pickable = true
 script = ExtResource( 3 )

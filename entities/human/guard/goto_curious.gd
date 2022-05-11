@@ -1,7 +1,6 @@
 extends State
 
 var path: Array = []
-var new_path: Array = []
 var levelNavigation: Navigation2D = null
 var target := Vector2()
 var body : KinematicBody2D
@@ -46,7 +45,7 @@ func navigate():
 
 func generate_path():
 	if levelNavigation and target:
-		new_path = levelNavigation.get_simple_path(body.global_position, target, true)
+		var new_path = levelNavigation.get_simple_path(body.global_position, target, true)
 		if new_path.size() > 1:
 			path = new_path
 

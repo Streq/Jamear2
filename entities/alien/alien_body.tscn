@@ -357,7 +357,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=13]
 resource_name = "calm"
 
-[node name="alien_body" type="KinematicBody2D" groups=["alien"]]
+[node name="alien_body" type="KinematicBody2D" groups=["alien", "body"]]
 collision_layer = 8
 script = ExtResource( 3 )
 sprite_name = "alien"

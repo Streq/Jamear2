@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://entities/human/scientist/dead.gd" type="Script" id=1]
 [ext_resource path="res://entities/human/guard/idle.gd" type="Script" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://entities/human/scientist/heard_alarm.gd" type="Script" id=15]
 [ext_resource path="res://entities/human/scientist/goto_curious.gd" type="Script" id=16]
 [ext_resource path="res://entities/human/player_detector.tscn" type="PackedScene" id=17]
+[ext_resource path="res://entities/body.gd" type="Script" id=18]
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 125.0
@@ -113,6 +114,7 @@ shape = SubResource( 3 )
 script = ExtResource( 8 )
 
 [node name="body" parent="." instance=ExtResource( 9 )]
+script = ExtResource( 18 )
 
 [connection signal="timeout" from="addons/behavior/look_around/start_cooldown" to="addons/behavior/look_around" method="_on_start_cooldown_timeout"]
 [connection signal="timeout" from="addons/behavior/look_around/pause_duration" to="addons/behavior/look_around" method="_on_pause_duration_timeout"]

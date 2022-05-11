@@ -13,7 +13,7 @@ radius = 150.0
 [sub_resource type="Animation" id=2]
 resource_name = "aim"
 
-[node name="guard_body" instance=ExtResource( 1 )]
+[node name="guard_body" groups=["body"] instance=ExtResource( 1 )]
 sprite_name = "swat"
 speed = 100.0
 
