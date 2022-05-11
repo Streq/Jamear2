@@ -19,6 +19,7 @@ func enter(params):
 	initial_rotation = body.point_angle
 	body.dir = Vector2()
 	setup = true
+	looks = 0
 func physics_update(delta):
 	
 	var target_body = get_tree().get_nodes_in_group("player")[0].body
