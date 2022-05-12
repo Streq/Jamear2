@@ -13,4 +13,6 @@ static func angle_distance(from:float, to:float):
 	return distance
 	
 static func approach_angle(from: float, to: float, amount: float) -> float:
-	return approach(from, from + angle_distance(from, to), amount)
+	var result = approach(from, from + angle_distance(from, to), amount)
+#	print("from:", from,", to:", to, ", amount:", amount, ", result:", result)
+	return result

@@ -1,6 +1,6 @@
 extends Node
 
-signal alarm(where)
+signal alarm(where, who)
 signal deactivated()
 var activated = false
 onready var audio :AudioStreamPlayer2D = $alert
@@ -11,16 +11,16 @@ func _ready():
 	timer.connect("timeout", self, "deactivate")
 
 func activate():
-	activate_target(self.global_position)
+	activate_target(self.global_position, null)
 
 func deactivate():
 	activated = false
 	emit_signal("deactivated")
 
 
-func activate_target(target_position):
+func activate_target(target_position, who):
 	if !activated:
-		emit_signal("alarm", target_position)
+		emit_signal("alarm", target_position, who)
 		if !audio.playing:
 			audio.play()
 #		stinger.play()

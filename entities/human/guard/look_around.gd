@@ -12,7 +12,12 @@ var initial_rotation : float
 var body = null
 var target_rot : float
 var setup = true
-func enter(params):
+var looks_limit = 4
+export var look_speed = 2.0
+
+func _enter(params):
+	if params and params.size():
+		looks_limit = params[0]
 	look_around = false
 	start_cooldown.start()
 	body = get_parent().get_parent()
@@ -29,27 +34,26 @@ func physics_update(delta):
 		emit_signal("finish", "alert", null)
 		memory.remember(target_body)
 	elif look_around:
-		if looks < 5:
+		if looks < looks_limit:
 			if setup:
-				target_rot = initial_rotation
+#				print(looks)
 				if looks == 0:
+					target_rot = initial_rotation
 					if memory.target_direction:
 						target_rot = memory.target_direction.angle()
 					else: 
-						target_rot = initial_rotation
+						target_rot += deg2rad(90)*Bool.sign(look_right)
 					initial_rotation = target_rot
 				else:
-					var look_angle = initial_rotation + deg2rad(180)*float(look_right)
-					target_rot += look_angle
+					target_rot += deg2rad(179)*Bool.sign(look_right)
 				setup = false
 				
-			body.point_to(Math.approach_angle(body.point_angle, target_rot, delta*2.0))
+			body.point_to(Math.approach_angle(body.point_angle, target_rot, delta*look_speed))
 			
 			var rotation = body.point_angle
-			if abs(Math.angle_distance(rotation, target_rot)) < PI/90.0:
-				
+			if Math.angle_distance(rotation, target_rot) == 0.0:
 				looks += 1
-				look_right = randi()%2>0
+				look_right = !look_right
 				pause_duration.start()
 				look_around = false
 				setup = true

@@ -10,11 +10,11 @@ func trigger():
 		return true
 	return false
 	
-func trigger_target(target_pos):
+func trigger_target(target_pos, who):
 	var buttons = button_area.get_overlapping_areas()
 	if buttons.size():
 		var button = buttons[0].owner
-		button.activate_target(target_pos)
+		button.activate_target(target_pos, who)
 		return true
 	return false
 

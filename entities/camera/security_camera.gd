@@ -15,5 +15,5 @@ func _physics_process(delta):
 		var body = tree.get_nodes_in_group("player")[0].body
 		if vista.can_see(body) and body.is_in_group("alien"):
 			emit_signal("player_detected")
-			alarm.activate_target(body.global_position)
+			alarm.activate_target(body.global_position, body)
 			

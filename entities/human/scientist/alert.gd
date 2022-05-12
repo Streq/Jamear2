@@ -22,6 +22,6 @@ func physics_update(delta):
 		body.dir = Vector2()
 		
 		body.memory.remember(target_body)
-		body.yell.activate_target(body.memory.target_position)
+		body.yell.activate_target(body.memory.target_position, target_body)
 		body.expression_anim.play("alert")
 

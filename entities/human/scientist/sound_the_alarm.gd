@@ -27,9 +27,9 @@ func _physics_update(delta):
 		#close enough to press
 		else:
 			body.look_at_position(target_body.global_position)
-			var could_press = body.skill.trigger_target(body.memory.target_position)
+			var could_press = body.skill.trigger_target(body.memory.target_position, body.memory.suspect_body)
 			if could_press:
-				emit_signal("finish", "look_around", null)
+				emit_signal("finish", "look_around", [20])
 				return
 			
 	#no alarm to press, run away and open anything in path

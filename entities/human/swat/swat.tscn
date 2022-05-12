@@ -51,6 +51,7 @@ script = ExtResource( 7 )
 
 [node name="look_around" type="Node" parent="addons/behavior"]
 script = ExtResource( 11 )
+look_speed = 4.0
 
 [node name="start_cooldown" type="Timer" parent="addons/behavior/look_around"]
 wait_time = 0.6

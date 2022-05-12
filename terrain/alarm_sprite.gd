@@ -16,7 +16,7 @@ func _ready():
 #	pass
 
 
-func _on_alarm_button_alarm(where):
+func _on_alarm_button_alarm(where, who):
 	frame_coords.y = 1
 
 

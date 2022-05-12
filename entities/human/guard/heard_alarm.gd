@@ -9,6 +9,7 @@ onready var timer = $reaction_time
 func _enter(params):
 	target = params[0]
 	body = get_parent().get_parent()
+	body.memory.suspect_body = params[1]
 	body.expression_anim.play("curious_alert")
 	if body.memory.anxious:
 		timer.start()#0.01)

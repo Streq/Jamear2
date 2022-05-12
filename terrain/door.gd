@@ -21,8 +21,8 @@ func trigger():
 
 
 func activate():
-	activate_target(self.global_position)
+	activate_target(self.global_position, null)
 
-func activate_target(target_position):
+func activate_target(target_position, who):
 	trigger()
 		

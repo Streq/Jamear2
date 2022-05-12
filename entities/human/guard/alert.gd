@@ -31,4 +31,4 @@ func physics_update(delta):
 		body.dir = Vector2()
 		
 		memory.remember(target_body)
-		body.yell.activate_target(target_body.global_position)
+		body.yell.activate_target(target_body.global_position, target_body)
