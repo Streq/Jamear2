@@ -1,2 +1,2 @@
-# Jamear2
+# LaManteCosaEscapa
 Juego para la segunda edición de Jamear
